@@ -1,17 +1,17 @@
 (* ::Package:: *)
 
-(*tscale=20;*)
+(*tscale=1;*)
 
 
-tmax=10;
-steps=500;
+tmax=20;
+steps=1000;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=1000;
+runs=10;
 
 
-length=2;
+length=8;
 
 
 sites=length;
@@ -20,7 +20,10 @@ sites=length;
 (*coh = Join[Table[0,{sites}],Table[1,{sites}]]*)
 
 
-coh = {0,1,1,0};
+(*coh = {0,1,1,0};*)
+
+
+coh=Flatten[{Table[{0,1},{length/2}],Table[{1,0},{length/2}]}];
 
 
 occupied={};
@@ -32,7 +35,7 @@ occupied={};
 hopt[t_] := 1
 
 
-intU[t_] := 5
+intU[t_] := 10
 
 
 numbos = 2 sites;
