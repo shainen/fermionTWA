@@ -11,10 +11,10 @@
 (*SetDirectory[NotebookDirectory[]]*)
 
 
-SetDirectory[Directory[]<>"/fermionTWA"];
-
-
 <<randomSeed.wl
+
+
+SetDirectory[Directory[]<>"/fermionTWA"];
 
 
 <<dynComplex.wl
