@@ -27,7 +27,7 @@ cp -r ${prj} $$SCRATCH_DIR/
 cd $$SCRATCH_DIR/
 
 # Run the script
-echo "SeedRandom[1]" > randomSeed.wl
+echo "SeedRandom[$$PBS_ARRAYID]" > randomSeed.wl
 time math -script ${prj}/runTWA.wl
 
 # Remove the now-useless files
