@@ -8,10 +8,10 @@
 (*setup*)
 
 
-(*SetDirectory[NotebookDirectory[]]*)
+SetDirectory[NotebookDirectory[]]
 
 
-SetDirectory[Directory[]<>"/fermionTWA"];
+(*SetDirectory[Directory[]<>"/fermionTWA"];*)
 
 
 <<randomSeed.wl
@@ -20,10 +20,10 @@ SetDirectory[Directory[]<>"/fermionTWA"];
 <<dynComplex.wl
 
 
-<<const.wl
+<<constSlaveHubbard.wl
 
 
-<<makeEqs.wl
+<<eqsSlaveHubbard.wl
 
 
 <<initsComplex.wl
@@ -41,12 +41,17 @@ Dynamic[rr]
 
 observables={Em[#,#]&/@Range[numferm],bh[#]&/@Range[numbos],
 Flatten[{Table[Table[Em[ii,jj],{jj,ii+1,numferm}],{ii,numferm-1}],Table[Table[El[ii,jj],{jj,ii+1,numferm}],{ii,numferm-1}]}]};
+obsfun=Function[{values},
+{values[[1]]+1/2,Abs[values[[2]]]^2-1/2,Total[(values[[1]]\[Transpose])^2]/2+Total[Abs[values[[3]]\[Transpose]]^2]}
+];
+
+
 start=makeDSolveStart[observables];
 
 
 fullTWA=0;
 Table[
-fullTWA+=runRandomInits[start]/runs;
+fullTWA+=runRandomInits[start,obsfun]/runs;
 ,{rr,runs}];
 
 
