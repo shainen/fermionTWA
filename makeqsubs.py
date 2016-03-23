@@ -5,6 +5,8 @@ project=getcwd().split('/')[-1]
 
 runname=getcwd().split('/')[-2]
 
+topic=getcwd().split('/')[-4]
+
 qsubfile = Template("""
 #!/bin/sh
 #PBS -j oe
@@ -15,7 +17,7 @@ qsubfile = Template("""
 
 RUN_NAME=${rname}
 SCRATCH_DIR=/data/$$USER/$$RUN_NAME/r$$PBS_ARRAYID
-LOCAL_DIR=/home/shainen/hubbard/build
+LOCAL_DIR=/home/shainen/${tp}/build
 
 mkdir -p $$SCRATCH_DIR
 
@@ -37,5 +39,5 @@ rm -r ${prj}
 """)
 
 with open("../"+runname+".qsub", "w") as f:
-    f.write(qsubfile.substitute(rname=runname,prj=project))
+    f.write(qsubfile.substitute(rname=runname,prj=project,tp=topic))
 
