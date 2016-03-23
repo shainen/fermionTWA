@@ -2,7 +2,7 @@
 
 makeDSolveStart=Function[{observables},
 Block[{
-hamkinb=Total[(bh[#][t]\[Conjugate]bh[#][t]-1/2)&/@{3,4}],
+hamkinb=Total[(bh[#][t]\[Conjugate]bh[#][t]-1/2)&/@Range[length+1,2length]],
 hamIntAndFEqs=Total[( 
 (hEm[#1,#2]+hEm[#1+sites,#2+sites])
 (bh[#2][t]\[Conjugate]bh[#1][t]-bh[#2+sites][t]\[Conjugate]bh[#1+sites][t])
