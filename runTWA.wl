@@ -20,13 +20,16 @@ SetDirectory[NotebookDirectory[]]
 <<dynComplex.wl
 
 
-<<constSlaveHubbard.wl
+<<2dfuncs.wl
 
 
-<<eqsSlaveHubbard.wl
+<<constTwoChannel.wl
 
 
-<<initsComplex.wl
+<<eqsTwoChannel.wl
+
+
+<<initsComplexMom.wl
 
 
 <<ndsolve.wl
@@ -51,24 +54,17 @@ start=makeDSolveStart[observables];
 
 fullTWA=0;
 Table[
-fullTWA+=runRandomInits[start,obsfun]/runs;
+fullTWA+=singleRun[start,initsMom,obsfun]/runs;
 ,{rr,runs}];
 
 
-nfup=fullTWA[[1]]\[Transpose][[1;;sites]];
+ncup=fullTWA[[1]]\[Transpose][[1;;sites]];
 
 
-nfdown=fullTWA[[1]]\[Transpose][[sites+1;;2sites]];
+ncdown=fullTWA[[1]]\[Transpose][[sites+1;;2sites]];
 
 
-nbvac=fullTWA[[2]]\[Transpose][[1;;sites]];
-
-
-nbfull=fullTWA[[2]]\[Transpose][[sites+1;;2sites]];
-
-
-ncup=nfup+nbfull;
-ncdown=nfdown+nbfull;
+(*nbvac=fullTWA[[2]]\[Transpose][[1;;sites]];*)
 
 
 mmu=MaxMemoryUsed[]/10.^6;
@@ -77,4 +73,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["dataFermion.dat",{mmu,nfup,nfdown,nbvac,nbfull,ncup,ncdown}];
+(*Save["dataFermion.dat",{mmu,nfup,nfdown,nbvac,nbfull,ncup,ncdown}];*)
