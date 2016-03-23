@@ -8,10 +8,10 @@
 (*setup*)
 
 
-SetDirectory[NotebookDirectory[]]
+(*SetDirectory[NotebookDirectory[]]*)
 
 
-(*SetDirectory[Directory[]<>"/fermionTWA"];*)
+SetDirectory[Directory[]<>"/fermionTWA"];
 
 
 <<randomSeed.wl
@@ -64,13 +64,10 @@ ncup=fullTWA[[1]]\[Transpose][[1;;sites]];
 ncdown=fullTWA[[1]]\[Transpose][[sites+1;;2sites]];
 
 
-(*nbvac=fullTWA[[2]]\[Transpose][[1;;sites]];*)
-
-
 mmu=MaxMemoryUsed[]/10.^6;
 
 
 SetDirectory[ParentDirectory[]];
 
 
-(*Save["dataFermion.dat",{mmu,nfup,nfdown,nbvac,nbfull,ncup,ncdown}];*)
+Save["dataFermion.dat",{mmu,ncup,ncdown}];
