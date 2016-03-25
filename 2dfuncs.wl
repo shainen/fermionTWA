@@ -23,13 +23,13 @@ addl[num_]:=Mod[num,length]
 (*fou1d[data_,fou1_,fou2_]:=Transpose[Map[fou2,Transpose[Map[fou1,Transpose[data,{4,5,2,3,1}],{4}],{1,4,5,2,3}],{4}],{5,1,2,3,4}]*)
 
 
-(*fermsbyfermstosxy1sxy2[data_?TensorQ]:=Transpose[Partition[Transpose[Partition[data,{length^2,length^2}],{3,4,1,2}],{length,length}],{2,5,3,6,1,4}]*)
+fermsbyfermstosxy1sxy2[data_?TensorQ]:=Transpose[Partition[Transpose[Partition[data,{length^2,length^2}],{3,4,1,2}],{length,length}],{2,5,3,6,1,4}]
 
 
-(*fou2d[data_,fou1_,fou2_]:=Transpose[Map[fou2,Transpose[Map[fou1,Transpose[data,{5,6,7,2,3,4,1}],{5}],{1,5,6,7,2,3,4}],{5}],{7,1,2,3,4,5,6}]*)
+fou2d[data_,fou1_,fou2_]:=Transpose[Map[fou1,Transpose[Map[fou2,data,{4}],{4,5,6,1,2,3}],{4}],{4,5,6,1,2,3}]
 
 
-(*makeX[data_]:=Chop[data+data\[Conjugate]]*)
+backtofermsbyferms[data_?TensorQ]:=Flatten/@Flatten[data,2]
 
 
-(*makeY[data_]:=Chop[I(data-data\[Conjugate])]*)
+makeMom[data_,fou1_,fou2_]:=backtofermsbyferms[fou2d[fermsbyfermstosxy1sxy2[data],fou1,fou2]]

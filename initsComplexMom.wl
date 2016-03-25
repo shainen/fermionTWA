@@ -10,6 +10,9 @@ there[x_]:=Length[Select[occupied,#==x&]]
 random[mean_,var_]:=If[var==0,mean,RandomVariate[NormalDistribution[mean,Sqrt[var/2]]]]
 
 
+(*random[mean_,var_]:=mean*)
+
+
 meanEm[ii_,jj_]:=KroneckerDelta[ii,jj](there[ii]-1/2)
 meanEl[ii_,jj_]:=0
 
@@ -26,8 +29,12 @@ randMatEm:=SymmetrizedArray[{i_,j_}:>makeRandEm[i,j],{numferm,numferm},Symmetric
 randMatEl:=SymmetrizedArray[{i_,j_}:>makeRandEl[i,j]+I makeRandEl[i,j],{numferm,numferm}, Antisymmetric[{1, 2}]]
 
 
-randMomEm:=(InverseFourier/@((Fourier/@randMatEm)\[Transpose]))\[Transpose]
-randMomEl:=Fourier[randMatEl]
+(*randMomEm:=(InverseFourier/@((Fourier/@randMatEm)\[Transpose]))\[Transpose]
+randMomEl:=Fourier[randMatEl]*)
+
+
+randMomEm:=makeMom[randMatEm,InverseFourier,Fourier]
+randMomEl:=makeMom[randMatEl,Fourier,Fourier]
 
 
 initsEmPos:=(rm=randMatEm;Table[Table[Em[ii,jj][0]==rm[[ii,jj]],{jj,ii,numferm}],{ii,numferm}])
@@ -39,6 +46,9 @@ initsElMom:=(rm=randMomEl;Table[Table[El[ii,jj][0]==rm[[ii,jj]],{jj,ii+1,numferm
 
 
 randomB[mean_,var_]:=RandomVariate[NormalDistribution[mean,Sqrt[var/2]]] + I RandomVariate[NormalDistribution[0,Sqrt[var/2]]]
+
+
+(*randomB[mean_,var_]:=mean*)
 
 
 randomBoseInits:=Table[randomB[coh[[n]],1/2],{n,numbos}]

@@ -8,7 +8,7 @@ steps=1000;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=10;
+runs=100;
 
 
 length=3;
@@ -44,4 +44,10 @@ finMu=10;
 \[Omega][t_]:=-finMu(1-E^(-t^2/tscale^2))
 
 
+(*\[Omega][t_]:=0*)
+
+
 g[t_]:=(1-E^(-t^2/tscale^2))
+
+
+(*g[t_]:=0*)
