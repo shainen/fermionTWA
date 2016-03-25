@@ -26,7 +26,7 @@ makeRandEl[ii_,jj_]:=random[meanEl[ii,jj],varEl[ii,jj]]
 
 
 randMatEm:=SymmetrizedArray[{i_,j_}:>makeRandEm[i,j],{numferm,numferm},Symmetric[{1, 2}]]+I SymmetrizedArray[{i_,j_}:>makeRandEm[i,j],{numferm,numferm}, Antisymmetric[{1, 2}]]
-randMatEl:=SymmetrizedArray[{i_,j_}:>makeRandEl[i,j]+I makeRandEl[i,j],{numferm,numferm}, Antisymmetric[{1, 2}]]
+randMatEl:=Normal@SymmetrizedArray[{i_,j_}:>makeRandEl[i,j]+I makeRandEl[i,j],{numferm,numferm}, Antisymmetric[{1, 2}]]
 
 
 (*randMomEm:=(InverseFourier/@((Fourier/@randMatEm)\[Transpose]))\[Transpose]
