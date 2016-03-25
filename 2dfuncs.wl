@@ -26,7 +26,7 @@ addl[num_]:=Mod[num,length]
 fermsbyfermstosxy1sxy2[data_?TensorQ]:=Transpose[Partition[Transpose[Partition[data,{length^2,length^2}],{3,4,1,2}],{length,length}],{2,5,3,6,1,4}]
 
 
-fou2d[data_,fou1_,fou2_]:=Transpose[Map[fou1,Transpose[Map[fou2,data,{4}],{4,5,6,1,2,3}],{4}],{4,5,6,1,2,3}]
+fou2d[data_,fou1_,fou2_]:=Chop[Transpose[Map[fou1,Transpose[Map[fou2,data,{4}],{4,5,6,1,2,3}],{4}],{4,5,6,1,2,3}]]
 
 
 backtofermsbyferms[data_?TensorQ]:=Flatten/@Flatten[data,2]

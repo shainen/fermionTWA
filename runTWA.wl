@@ -42,10 +42,13 @@ SetDirectory[Directory[]<>"/fermionTWA"];
 Dynamic[rr]
 
 
-observables={Em[#,#]&/@Range[numferm],bh[#]&/@Range[numbos],
+(*observables={Em[#,#]&/@Range[numferm],bh[#]&/@Range[numbos],
 Flatten[{Table[Table[Em[ii,jj],{jj,ii+1,numferm}],{ii,numferm-1}],Table[Table[El[ii,jj],{jj,ii+1,numferm}],{ii,numferm-1}]}]};
+*)
+observables=Join[{bh[#]&/@Range[numbos]},
+Table[Table[Em[ii,jj],{jj,ii,numferm}],{ii,numferm}](*,Table[Table[El[ii,jj],{jj,ii+1,numferm}],{ii,numferm-1}]*)];
 obsfun=Function[{values},
-{values[[1]]+1/2,Abs[values[[2]]]^2-1/2,Total[(values[[1]]\[Transpose])^2]/2+Total[Abs[values[[3]]\[Transpose]]^2]}
+Join[{Abs[InverseFourier[Partition[#,length]]]^2&/@(values[[1]])-1/2},values[[2;;1+numferm]]]
 ];
 
 
@@ -58,10 +61,21 @@ fullTWA+=singleRun[start,initsMom,obsfun]/runs;
 ,{rr,runs}];
 
 
-ncup=fullTWA[[1]]\[Transpose][[1;;sites]];
+nbos=Transpose[fullTWA[[1]],{3,1,2}];
 
 
-ncdown=fullTWA[[1]]\[Transpose][[sites+1;;2sites]];
+matDataEm:=fullTWA[[2;;1+numferm]]\[Transpose];
+(*matDataEl:=fullTWA[[1+numferm+1;;1+2numferm-1]]\[Transpose];*)
+
+
+listToMatEm[list_,i_,j_]:=If[i<=j,list[[i,j-i+1]],list[[j,i-j+1]]\[Conjugate]]
+(*listToMatEl[list_,i_,j_]:=Which[i==j,0,i\[LessEqual]j,list[[i,j-i]],True,-list[[j,i-j]]]*)
+
+
+momNums[data_]:=Diagonal[makeMom[Table[listToMatEm[data,i,j],{i,numferm},{j,numferm}],Fourier,InverseFourier]]+.5
+
+
+fermMomNums=(momNums/@matDataEm)\[Transpose];
 
 
 mmu=MaxMemoryUsed[]/10.^6;
@@ -70,4 +84,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["dataFermion.dat",{mmu,ncup,ncdown}];
+Save["dataFermion.dat",{mmu,nbos,fermMomNums}];
