@@ -16,32 +16,28 @@ random[mean_,var_]:=If[var==0,mean,RandomVariate[NormalDistribution[mean,Sqrt[va
 (*random[mean_,var_]:=mean*)
 
 
-meanEm=Table[Table[KroneckerDelta[ii,jj](there[ii]-1/2),{jj,ii,numferm}],{ii,numferm}];
-meanEl=Table[Table[0,{jj,ii+1,numferm}],{ii,numferm-1}];
+meanEm[ii_,jj_]:=KroneckerDelta[ii,jj](there[ii]-1/2)
+meanEl[ii_,jj_]:=0
 
 
-meanBm=Table[Table[KroneckerDelta[ii,jj](thereB[ii]+1/2),{jj,ii,numferm}],{ii,numferm}];
-meanBl=Table[Table[0,{jj,ii+1,numferm}],{ii,numferm-1}];
+meanBm[ii_,jj_]:=KroneckerDelta[ii,jj](thereB[ii]+1/2)
+meanBl[ii_,jj_]:=0
 
 
-varEm=Table[Table[1/4-(1/2-there[ii])(1/2-there[jj]),{jj,ii,numferm}],{ii,numferm}];
-varEl=Table[Table[1/4+(1/2-there[ii])(1/2-there[jj]),{jj,ii+1,numferm}],{ii,numferm-1}];
+varEm[ii_,jj_]:=1/4-(1/2-there[ii])(1/2-there[jj])
+varEl[ii_,jj_]:=1/4+(1/2-there[ii])(1/2-there[jj])
 
 
-varBm=Table[Table[-1/4+(1/2+thereB[ii])(1/2+thereB[jj]),{jj,ii,numferm}],{ii,numferm}];
-varBl=Table[Table[1/4+(1/2+thereB[ii])(1/2+thereB[jj]),{jj,ii+1,numferm}],{ii,numferm-1}];
+varBm[ii_,jj_]:=-1/4+(1/2+thereB[ii])(1/2+thereB[jj])
+varBl[ii_,jj_]:=1/4+(1/2+thereB[ii])(1/2+thereB[jj])
 
 
-randomEm:=Apply[random,(Transpose/@({meanEm,varEm}\[Transpose])),{2}]
+randomEm:=random[meanEm[#1,#2],varEm[#1,#2]]&@@@midPairs
+randomEl:=random[meanEl[#1,#2],varEl[#1,#2]]&@@@lowPairs
 
 
-randomEl:=Apply[random,(Transpose/@({meanEl,varEl}\[Transpose])),{2}]
-
-
-randomBm:=Apply[random,(Transpose/@({meanBm,varBm}\[Transpose])),{2}]
-
-
-randomBl:=Apply[random,(Transpose/@({meanBl,varBl}\[Transpose])),{2}]
+randomBm:=random[meanBm[#1,#2],varBm[#1,#2]]&@@@midPairs
+randomBl:=random[meanBl[#1,#2],varBl[#1,#2]]&@@@lowPairs
 
 
 randomB[mean_,var_]:=RandomVariate[NormalDistribution[mean,Sqrt[var/2]]] + I RandomVariate[NormalDistribution[0,Sqrt[var/2]]]
