@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(*tscale=1;*)
+(*tscale=10;*)
 
 
 tmax=10;
@@ -8,7 +8,7 @@ steps=500;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=1000;
+runs=100;
 
 
 length=2;
@@ -17,25 +17,7 @@ length=2;
 sites=length;
 
 
-(*coh = Join[Table[0,{sites}],Table[1,{sites}]]*)
-
-
-coh = {0,1,1,0};
-
-
-(*coh=Flatten[{Table[{0,1},{length/2}],Table[{1,0},{length/2}]}];*)
-
-
-hopt[t_] := 1
-
-
-intU[t_] := 5
-
-
-numbos = 2 sites;
-
-
-numferm = 2 sites;
+numferm=2 sites;
 
 
 midPairs=Flatten[{Table[Table[{ii,jj},{jj,ii,length}],{ii,length}],Table[Table[{ii,jj},{jj,ii,2length}],{ii,length+1,2length}]},2];
@@ -48,7 +30,13 @@ lowPairs=Flatten[Table[{ii,jj},{ii,length},{jj,length+1,2length}],1];
 bonds={{1,2}};
 
 
-occupied={};
+hopt[t_] := 1
 
 
-occupiedB={2,3};
+intU[t_] := 5
+
+
+(*occupied=Join[nfc/@(Position[fermenergy,_?Negative,2]-1),nfc/@(Position[fermenergy,0.,2]-1),nfc/@(Position[fermenergy,_?Negative,2]-1)+sites,nfc/@(Position[fermenergy,0.,2]-1)+sites];*)
+
+
+occupied={1,3};

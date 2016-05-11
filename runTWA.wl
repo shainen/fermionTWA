@@ -8,10 +8,10 @@
 (*setup*)
 
 
-(*SetDirectory[NotebookDirectory[]]*)
+SetDirectory[NotebookDirectory[]]
 
 
-SetDirectory[Directory[]<>"/fermionTWA"];
+(*SetDirectory[Directory[]<>"/fermionTWA"];*)
 
 
 <<randomSeed.wl
@@ -52,13 +52,13 @@ Join[{Abs[InverseFourier[Partition[#,length]]]^2&/@(values[[1]])-1/2},values[[2;
 ];
 
 
-start=makeDSolveStart[observables];
+t1=Timing[start=makeDSolveStart[observables];];
 
 
 fullTWA=0;
-Table[
+t2=Timing[Table[
 fullTWA+=singleRun[start,initsMom,obsfun]/runs;
-,{rr,runs}];
+,{rr,runs}];];
 
 
 nbos=Transpose[fullTWA[[1]],{3,1,2}];
@@ -75,7 +75,7 @@ listToMatEm[list_,i_,j_]:=If[i<=j,list[[i,j-i+1]],list[[j,i-j+1]]\[Conjugate]]
 momNums[data_]:=Diagonal[makeMom[Table[listToMatEm[data,i,j],{i,numferm},{j,numferm}],Fourier,InverseFourier]]+.5
 
 
-fermMomNums=(momNums/@matDataEm)\[Transpose];
+t3=Timing[fermMomNums=(momNums/@matDataEm)\[Transpose];];
 
 
 mmu=MaxMemoryUsed[]/10.^6;
@@ -84,4 +84,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["dataFermion.dat",{mmu,nbos,fermMomNums}];
+Save["dataFermion.dat",{mmu,t1,t2,t3,nbos,fermMomNums}];

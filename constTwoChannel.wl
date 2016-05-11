@@ -8,10 +8,10 @@ steps=1000;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=10;
+runs=1;
 
 
-length=3;
+length=10;
 
 
 sites=length^2;
