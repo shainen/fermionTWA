@@ -5,10 +5,10 @@ steps=1000;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=100;
+runs=10;
 
 
-length=8;
+length=12;
 
 
 sites=length;
@@ -39,7 +39,13 @@ coh=Table[0,{numbos}];
 (*occupied={1,3};*)
 
 
-occupied=Join[Range[2,sites,4],Range[4,sites,4]+sites];
+(*occupied=Join[Range[2,sites,4],Range[4,sites,4]+sites];*)
+
+
+ups=RandomSample[Range[2,sites,2],sites/4];
+
+
+occupied=Join[ups,Complement[Range[2,sites,2],ups]+sites];
 
 
 \[Omega][t_]:=10
@@ -48,9 +54,9 @@ occupied=Join[Range[2,sites,4],Range[4,sites,4]+sites];
 (*dis={1,-1};*)
 
 
-\[CapitalDelta]=3;
+\[CapitalDelta]=1;
 \[Beta]=E;
-\[Phi]=1;
+\[Phi]=RandomReal[{0,2\[Pi]}];
 
 
 (*dis=RandomReal[{-1,1},sites];*)

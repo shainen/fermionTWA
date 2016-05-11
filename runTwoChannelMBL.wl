@@ -76,4 +76,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-(*Save["dataFermion.dat",{mmu,t1,t2,t3,nbos,fermMomNums}];*)
+Save["dataFermion.dat",{mmu,t1,t2,\[Phi],ups,fermOc,boseOc,imb}];
