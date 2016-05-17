@@ -8,10 +8,10 @@
 (*setup*)
 
 
-SetDirectory[NotebookDirectory[]]
+(*SetDirectory[NotebookDirectory[]]*)
 
 
-(*SetDirectory[Directory[]<>"/fermionTWA"];*)
+SetDirectory[Directory[]<>"/fermionTWA"];
 
 
 <<randomSeed.wl
@@ -61,6 +61,15 @@ fullTWA+=runRandomInits[start,obsfun]/runs;
 ,{rr,runs}];];
 
 
+(*fullTWA=0;
+t2=Timing[Table[
+\[Phi]=2\[Pi] rr/runs;
+dis=N@\[CapitalDelta] Cos[2\[Pi] \[Beta] # +\[Phi]]&/@Range[sites];
+start=makeDSolveStart[observables];
+fullTWA+=runMeanInits[start,obsfun]/runs;
+,{rr,runs}];];*)
+
+
 fermOc=fullTWA[[1]]\[Transpose];
 boseOc=fullTWA[[2]]\[Transpose];
 
@@ -76,4 +85,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["dataFermion.dat",{mmu,t1,t2,\[Phi],ups,fermOc,boseOc,imb}];
+Save["dataFermion.dat",{mmu,t1,t2,\[Phi],occupied,fermOc,boseOc,imb}];

@@ -1,14 +1,14 @@
 (* ::Package:: *)
 
-tmax=30;
+tmax=35;
 steps=1000;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=10;
+runs=1;
 
 
-length=12;
+length=40;
 
 
 sites=length;
@@ -24,7 +24,7 @@ midPairs=Flatten[{Table[Table[{ii,jj},{jj,ii,sites}],{ii,sites}],Table[Table[{ii
 lowPairs=Flatten[Table[{ii,jj},{ii,sites},{jj,sites+1,2sites}],1];
 
 
-bonds=Table[{n,Mod[n+1,length,1]},{n,length}];
+bonds=Table[{n,Mod[n+1,length,1]},{n,length-1}];
 
 
 (*bonds={{1,2}};*)
@@ -42,20 +42,35 @@ coh=Table[0,{numbos}];
 (*occupied=Join[Range[2,sites,4],Range[4,sites,4]+sites];*)
 
 
-ups=RandomSample[Range[2,sites,2],sites/4];
+evens=Range[2,sites,2];
 
 
-occupied=Join[ups,Complement[Range[2,sites,2],ups]+sites];
+doubles=RandomSample[evens,6];
 
 
-\[Omega][t_]:=10
+ups=RandomSample[Complement[evens,doubles],7];
+
+
+downs=Complement[Complement[evens,doubles],ups];
+
+
+occupied=Join[doubles,doubles+sites,ups,downs+sites];
+
+
+(*ups=RandomSample[Range[2,sites,2],sites/4];*)
+
+
+(*occupied=Join[ups,Complement[Range[2,sites,2],ups]+sites];*)
+
+
+\[Omega][t_]:=10.
 
 
 (*dis={1,-1};*)
 
 
-\[CapitalDelta]=1;
-\[Beta]=E;
+\[CapitalDelta]=2.9;
+\[Beta]=0.721;
 \[Phi]=RandomReal[{0,2\[Pi]}];
 
 
@@ -65,4 +80,4 @@ occupied=Join[ups,Complement[Range[2,sites,2],ups]+sites];
 dis=N@\[CapitalDelta] Cos[2\[Pi] \[Beta] # +\[Phi]]&/@Range[sites];
 
 
-g[t_]:=1
+g[t_]:=1.

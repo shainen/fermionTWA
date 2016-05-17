@@ -20,6 +20,16 @@ singleRun[startEq,Flatten[{initsEm,initsEl,initsb}],obfun]
 ];
 
 
+runMeanInits=Function[{startEq,obfun},
+Block[{initsEm,initsEl,initsb},
+initsb=bh[#][0]==coh[[#]]&/@Range[numbos];
+initsEm=Em[#1,#2][0]==meanEm[#1,#2]&@@@midPairs;
+initsEl=El[#1,#2][0]==meanEl[#1,#2]&@@@lowPairs;
+singleRun[startEq,Flatten[{initsEm,initsEl,initsb}],obfun]
+]
+];
+
+
 runRandomInitsFermiHubbard=Function[{startEq,obfun},
 Block[{initsEm,initsEl},
 initsEm=Em[#1,#2][0]==randomEm[#1,#2]&@@@midPairs;
