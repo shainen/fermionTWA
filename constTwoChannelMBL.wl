@@ -5,7 +5,7 @@ steps=1000;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=1;
+runs=10;
 
 
 length=40;
@@ -63,9 +63,6 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites];
 (*occupied=Join[ups,Complement[Range[2,sites,2],ups]+sites];*)
 
 
-\[Omega][t_]:=10.
-
-
 (*dis={1,-1};*)
 
 
@@ -80,4 +77,7 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites];
 dis=N@\[CapitalDelta] Cos[2\[Pi] \[Beta] # +\[Phi]]&/@Range[sites];
 
 
-g[t_]:=1.
+g[t_]:=2.
+
+
+\[Omega][t_]:=10.

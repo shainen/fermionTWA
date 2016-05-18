@@ -8,10 +8,10 @@
 (*setup*)
 
 
-(*SetDirectory[NotebookDirectory[]]*)
+SetDirectory[NotebookDirectory[]]
 
 
-SetDirectory[Directory[]<>"/fermionTWA"];
+(*SetDirectory[Directory[]<>"/fermionTWA"];*)
 
 
 <<randomSeed.wl
@@ -56,9 +56,11 @@ t1=Timing[start=makeDSolveStart[observables];];
 
 
 fullTWA=0;
-t2=Timing[Table[
+t2=Table[
+Timing[
 fullTWA+=runRandomInits[start,obsfun]/runs;
-,{rr,runs}];];
+][[1]]
+,{rr,runs}];
 
 
 (*fullTWA=0;
