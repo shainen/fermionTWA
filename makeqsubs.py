@@ -32,7 +32,7 @@ cd $$SCRATCH_DIR/
 cd ${prj}
 echo "SeedRandom[$$PBS_ARRAYID]" > randomSeed.wl
 cd ..
-time math -script ${prj}/runTwoChannelMBL.wl
+time math -script ${prj}/runTCMBL2d.wl
 
 # Remove the now-useless files
 rm -r ${prj} 
