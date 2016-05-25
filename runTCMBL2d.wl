@@ -20,13 +20,13 @@ SetDirectory[NotebookDirectory[]]
 <<dynComplex.wl
 
 
-(*<<2dfuncs.wl*)
+<<2dfuncs.wl
 
 
-<<constTwoChannelMBL.wl
+<<constTCMBL2d.wl
 
 
-<<eqsTwoChannelMBL.wl
+<<eqsTCMBL2d.wl
 
 
 <<initsComplex.wl
@@ -42,7 +42,8 @@ SetDirectory[NotebookDirectory[]]
 Dynamic[rr]
 
 
-observables={Em[#,#]&/@Range[numferm],bh[#]&/@Range[numbos]
+observables={(*Em[#1,#2]&@@@midPairs,El[#1,#2]&@@@lowPairs,bh[#]&/@Range[numbos]*)
+Em[#,#]&/@Range[numferm],bh[#]&/@Range[numbos]
 (*,Flatten[{Table[Table[Em[ii,jj],{jj,ii+1,numferm}],{ii,numferm-1}],Table[Table[El[ii,jj],{jj,ii+1,numferm}],{ii,numferm-1}]}]
 *)};
 obsfun=Function[{values},
@@ -87,4 +88,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["dataFermion.dat",{mmu,t1,t2,\[Phi],occupied,fermOc,boseOc,imb}];
+Save["dataFermion.dat",{mmu,t1,t2,\[Phi],occupied,times,fermOc,boseOc,imb}];

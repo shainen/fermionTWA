@@ -6,7 +6,7 @@ times=Range[0,tmax,tmax/(steps-1)];*)
 
 
 tminExp=-1;
-tmaxExp=2;
+tmaxExp=3;
 tmax=10.^tmaxExp;
 steps=1000;
 tExps=Range[tminExp,tmaxExp,(tmaxExp-tminExp)/(steps-1)];
@@ -16,10 +16,10 @@ times=10.^#&/@tExps;
 runs=1;
 
 
-length=8;
+length=4;
 
 
-sites=length;
+sites=length^2;
 
 
 numbos = sites;
@@ -28,17 +28,20 @@ numbos = sites;
 numferm = 2 sites;
 
 
-midPairs=Flatten[{Table[Table[{ii,jj},{jj,ii,sites}],{ii,sites}],Table[Table[{ii,jj},{jj,ii,2length}],{ii,length+1,2length}]},2];
+midPairs=Flatten[{Table[Table[{ii,jj},{jj,ii,sites}],{ii,sites}],Table[Table[{ii,jj},{jj,ii,2sites}],{ii,sites+1,2sites}]},2];
 lowPairs=Flatten[Table[{ii,jj},{ii,sites},{jj,sites+1,2sites}],1];
 
 
-bonds=Table[{n,Mod[n+1,length,1]},{n,length}];
+(*bonds=Table[{n,Mod[n+1,length,1]},{n,length}]*)
 
 
 (*bonds={{1,2}};*)
 
 
-(*bonds=Flatten[{{#,nfc[cfneither[#]+{0,0,1}]},{#,nfc[cfneither[#]+{0,1,0}]}}&/@Range[numferm],1];*)
+bonds=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{0,1}]},{xx,0,length-1},{yy,0,length-2}],1];
+
+
+bondsPerp={#,nfc[cfneither[#]+{0,1,0}]}&/@Range[sites];
 
 
 coh=Table[0,{numbos}];
@@ -65,7 +68,7 @@ odds=Range[1,sites,2];
 doubles=RandomSample[evens,numDoub];
 
 
-ups=RandomSample[Complement[evens,doubles],(length/2-numDoub)/2];
+ups=RandomSample[Complement[evens,doubles],(sites/2-numDoub)/2];
 
 
 downs=Complement[Complement[evens,doubles],ups];
@@ -94,7 +97,10 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites,extraOdds];
 (*dis=RandomReal[{-1,1},sites];*)
 
 
-dis=N@\[CapitalDelta] Cos[2\[Pi] \[Beta] # +\[Phi]]&/@Range[sites];
+dis=N@\[CapitalDelta] Cos[2\[Pi] \[Beta] # +\[Phi]]&/@Range[length];
+
+
+jPerp=0.1;
 
 
 g[t_]:=0
