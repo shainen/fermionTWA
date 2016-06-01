@@ -1,22 +1,14 @@
 (* ::Package:: *)
 
-(*tmax=35;
+tmax=35;
 steps=1000;
-times=Range[0,tmax,tmax/(steps-1)];*)
+times=Range[0,tmax,tmax/(steps-1)];
 
 
-tminExp=-1;
-tmaxExp=2;
-tmax=10.^tmaxExp;
-steps=1000;
-tExps=Range[tminExp,tmaxExp,(tmaxExp-tminExp)/(steps-1)];
-times=10.^#&/@tExps;
+runs=10;
 
 
-runs=1;
-
-
-length=8;
+length=40;
 
 
 sites=length;
@@ -50,7 +42,7 @@ coh=Table[0,{numbos}];
 (*occupied=Join[Range[2,sites,4],Range[4,sites,4]+sites];*)
 
 
-numDoub=0;
+numDoub=6;
 
 
 numOd=0;
@@ -86,7 +78,7 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites,extraOdds];
 (*dis={1,-1};*)
 
 
-\[CapitalDelta]=5.0;
+\[CapitalDelta]=2.9;
 \[Beta]=0.721;
 \[Phi]=RandomReal[{0,2\[Pi]}];
 
@@ -97,7 +89,10 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites,extraOdds];
 dis=N@\[CapitalDelta] Cos[2\[Pi] \[Beta] # +\[Phi]]&/@Range[sites];
 
 
-g[t_]:=0
+(*dis=0&/@Range[sites];*)
 
 
-\[Omega][t_]:=0
+g[t_]:=6.
+
+
+\[Omega][t_]:=20.

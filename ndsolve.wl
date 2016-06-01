@@ -30,6 +30,16 @@ singleRun[startEq,Flatten[{initsEm,initsEl,initsb}],obfun]
 ];
 
 
+runRFMBInits=Function[{startEq,obfun},
+Block[{initsEm,initsEl,initsb},
+initsb=bh[#][0]==coh[[#]]&/@Range[numbos];
+initsEm=Em[#1,#2][0]==randomEm[#1,#2]&@@@midPairs;
+initsEl=El[#1,#2][0]==randomEl[#1,#2]&@@@lowPairs;
+singleRun[startEq,Flatten[{initsEm,initsEl,initsb}],obfun]
+]
+];
+
+
 runRandomInitsFermiHubbard=Function[{startEq,obfun},
 Block[{initsEm,initsEl},
 initsEm=Em[#1,#2][0]==randomEm[#1,#2]&@@@midPairs;
