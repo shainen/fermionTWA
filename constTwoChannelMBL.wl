@@ -1,14 +1,22 @@
 (* ::Package:: *)
 
-tmax=35;
+(*tmax=35;
 steps=1000;
-times=Range[0,tmax,tmax/(steps-1)];
+times=Range[0,tmax,tmax/(steps-1)];*)
 
 
-runs=10;
+tminExp=-1;
+tmaxExp=3;
+tmax=10.^tmaxExp;
+steps=1000;
+tExps=Range[tminExp,tmaxExp,(tmaxExp-tminExp)/(steps-1)];
+times=10.^#&/@tExps;
 
 
-length=40;
+runs=1;
+
+
+length=8;
 
 
 sites=length;
@@ -24,7 +32,7 @@ midPairs=Flatten[{Table[Table[{ii,jj},{jj,ii,sites}],{ii,sites}],Table[Table[{ii
 lowPairs=Flatten[Table[{ii,jj},{ii,sites},{jj,sites+1,2sites}],1];
 
 
-bonds=Table[{n,Mod[n+1,length,1]},{n,length}];
+bonds=Table[{n,Mod[n+1,length,1]},{n,length-1}]
 
 
 (*bonds={{1,2}};*)
@@ -42,7 +50,7 @@ coh=Table[0,{numbos}];
 (*occupied=Join[Range[2,sites,4],Range[4,sites,4]+sites];*)
 
 
-numDoub=6;
+numDoub=0;
 
 
 numOd=0;
@@ -78,7 +86,7 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites,extraOdds];
 (*dis={1,-1};*)
 
 
-\[CapitalDelta]=2.9;
+\[CapitalDelta]=5.0;
 \[Beta]=0.721;
 \[Phi]=RandomReal[{0,2\[Pi]}];
 
@@ -92,7 +100,7 @@ dis=N@\[CapitalDelta] Cos[2\[Pi] \[Beta] # +\[Phi]]&/@Range[sites];
 (*dis=0&/@Range[sites];*)
 
 
-g[t_]:=6.
+g[t_]:=2.
 
 
-\[Omega][t_]:=20.
+\[Omega][t_]:=10.

@@ -58,7 +58,7 @@ t1=Timing[start=makeDSolveStart[observables];];
 fullTWA=0;
 t2=Table[
 Timing[
-fullTWA+=runRFMBInits[start,obsfun]/runs;
+fullTWA+=runRandomInits[start,obsfun]/runs;
 ][[1]]
 ,{rr,runs}];
 
