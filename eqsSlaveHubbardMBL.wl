@@ -13,13 +13,14 @@ hamIntAndFEqs=Total[(
 +(hEl[#2+sites,#1]-hEl[#2,#1+sites])
 (bh[#1][t]\[Conjugate]bh[#2+sites][t]\[Conjugate]+bh[#1+sites][t]\[Conjugate]bh[#2][t]\[Conjugate])
 )&@@@bonds],
+hamdisf=Total[dis[[#]](hEm[#,#]+hEm[#+sites,#+sites])&/@Range[sites]],
 hamtotb,beqns,binits,eqnsEm,eqnsEl,initsEm,initsEl,start
 },
 hamtotb=intU[t]hamkinb-hopt[t]hamIntAndFEqs[[1]];
 beqns=Table[bdot[bh[nn],hamtotb],{nn,numbos}];
 binits=Table[bh[nn][0]==0,{nn,numbos}];
-eqnsEm=Em[#1,#2]'[t]==-hopt[t]hamIntAndFEqs[[2,1,#1,#2]]&@@@midPairs;;
-eqnsEl=El[#1,#2]'[t]==-hopt[t]hamIntAndFEqs[[2,2,#1,#2]]&@@@lowPairs;
+eqnsEm=Em[#1,#2]'[t]==-hopt[t]hamIntAndFEqs[[2,1,#1,#2]]+hamdisf[[2,1,#1,#2]]&@@@midPairs;
+eqnsEl=El[#1,#2]'[t]==-hopt[t]hamIntAndFEqs[[2,2,#1,#2]]+hamdisf[[2,2,#1,#2]]&@@@lowPairs;
 initsEm=Em[#1,#2][0]==0&@@@midPairs;
 initsEl=El[#1,#2][0]==0&@@@lowPairs;
 start=First@NDSolve`ProcessEquations[Flatten[{beqns,eqnsEm,eqnsEl,binits,initsEm,initsEl}],observables,t,Method->{"EquationSimplification"->"Solve"}];
