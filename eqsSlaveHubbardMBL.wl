@@ -13,7 +13,7 @@ hamIntAndFEqs=Total[(
 +(hEl[#2+sites,#1]-hEl[#2,#1+sites])
 (bh[#1][t]\[Conjugate]bh[#2+sites][t]\[Conjugate]+bh[#1+sites][t]\[Conjugate]bh[#2][t]\[Conjugate])
 )&@@@bonds],
-hamdisf=Total[dis[[#]](hEm[#,#]+hEm[#+sites,#+sites])&/@Range[sites]],
+hamdisf=Total[dis[[#]](hEm[#,#]+hEm[#+sites,#+sites]+2bh[#+sites][t]\[Conjugate]bh[#+sites][t])&/@Range[sites]],
 hamtotb,beqns,binits,eqnsEm,eqnsEl,initsEm,initsEl,start
 },
 hamtotb=intU[t]hamkinb-hopt[t]hamIntAndFEqs[[1]];

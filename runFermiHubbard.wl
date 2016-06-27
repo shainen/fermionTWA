@@ -17,6 +17,9 @@ SetDirectory[NotebookDirectory[]]
 <<randomSeed.wl
 
 
+<<2dfuncs.wl
+
+
 <<dynComplex.wl
 
 
@@ -26,7 +29,10 @@ SetDirectory[NotebookDirectory[]]
 <<eqsFermiHubbard.wl
 
 
-<<initsComplex.wl
+<<initsComplexMom.wl
+
+
+<<initsDisc.wl
 
 
 <<ndsolve.wl
@@ -66,9 +72,15 @@ start=makeDSolveStartFermiHubbard[observables];
 
 eachTWA={};
 Table[
-AppendTo[eachTWA,runRandomInitsFermiHubbard[start,obsfun]];
+AppendTo[eachTWA,runMomInitsFermiHubbard[start,obsfun]];
 ,{rr,runs}];
 fullTWA=Total[eachTWA]/runs;
+
+
+fnumTWA=ArrayReshape[fullTWA[[1]]\[Transpose],{2,sites,steps}]\[Transpose];
+
+
+kinTermTWA=Total[2Re[fullTWA[[2]]\[Transpose][[{2,5}]]]];
 
 
 (*eachTWAC={};

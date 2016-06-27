@@ -1,20 +1,20 @@
 (* ::Package:: *)
 
-tscale=10;
+(*tscale=10;*)
 
 
-tmax=tscale;
+tmax=50;
 steps=1000;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=1;
+runs=1000;
 
 
-length=10;
+length=2;
 
 
-sites=length^2;
+sites=length;
 
 
 numbos = sites;
@@ -23,31 +23,41 @@ numbos = sites;
 numferm = 2 sites;
 
 
-numfvars=2numferm^2-numferm;
+midPairs=Flatten[{Table[Table[{ii,jj},{jj,ii,sites}],{ii,sites}],Table[Table[{ii,jj},{jj,ii,2length}],{ii,length+1,2length}]},2];
+lowPairs=Flatten[Table[{ii,jj},{ii,sites},{jj,sites+1,2sites}],1];
 
 
-coh=Table[0,{numbos}];
+(*numfvars=2numferm^2-numferm;*)
 
 
-fermenergy=Table[N[-2(Cos[2\[Pi] ii/length]+Cos[2\[Pi] jj/length])],{ii,0,length-1},{jj,0,length-1}];
+coh=Table[3,{numbos}];
 
 
-occupied=Join[nfc/@(Position[fermenergy,_?Negative,2]-1),nfc/@(Position[fermenergy,0.,2]-1),nfc/@(Position[fermenergy,_?Negative,2]-1)+sites,nfc/@(Position[fermenergy,0.,2]-1)+sites];
+(*fermenergy=Table[N[-2(Cos[2\[Pi] ii/length]+Cos[2\[Pi] jj/length])],{ii,0,length-1},{jj,0,length-1}];*)
 
 
-bonds=Flatten[{{#,nfc[cfneither[#]+{0,0,1}]},{#,nfc[cfneither[#]+{0,1,0}]}}&/@Range[numferm],1];
+(*occupied=Join[nfc/@(Position[fermenergy,_?Negative,2]-1),nfc/@(Position[fermenergy,0.,2]-1),nfc/@(Position[fermenergy,_?Negative,2]-1)+sites,nfc/@(Position[fermenergy,0.,2]-1)+sites];*)
 
 
-finMu=10;
+(*bonds=Flatten[{{#,nfc[cfneither[#]+{0,0,1}]},{#,nfc[cfneither[#]+{0,1,0}]}}&/@Range[numferm],1];*)
 
 
-\[Omega][t_]:=-finMu(1-E^(-t^2/tscale^2))
+occupied={};
 
 
-(*\[Omega][t_]:=0*)
+bonds={{1,2}};
 
 
-g[t_]:=(1-E^(-t^2/tscale^2))
+(*finMu=10;*)
 
 
-(*g[t_]:=0*)
+(*\[Omega][t_]:=-finMu(1-E^(-t^2/tscale^2))*)
+
+
+\[Omega][t_]:=1.
+
+
+(*g[t_]:=(1-E^(-t^2/tscale^2))*)
+
+
+g[t_]:=1/3.

@@ -32,6 +32,9 @@ SetDirectory[Directory[]<>"/fermionTWA"];
 <<initsComplex.wl
 
 
+<<initsDisc.wl
+
+
 <<ndsolve.wl
 
 

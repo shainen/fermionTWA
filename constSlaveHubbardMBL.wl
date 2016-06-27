@@ -4,7 +4,7 @@
 (*Sys*)
 
 
-tmax=35;
+tmax=10;
 steps=1000;
 times=Range[0,tmax,tmax/(steps-1)];
 
@@ -36,7 +36,7 @@ midPairs=Flatten[{Table[Table[{ii,jj},{jj,ii,sites}],{ii,sites}],Table[Table[{ii
 lowPairs=Flatten[Table[{ii,jj},{ii,sites},{jj,sites+1,2sites}],1];
 
 
-bonds=Table[{n,Mod[n+1,length,1]},{n,length-1}]
+bonds=Table[{n,Mod[n+1,length,1]},{n,length-1}];
 
 
 (* ::Subsection:: *)
@@ -79,14 +79,14 @@ boseOc=Join[empty,doubles+sites];
 coh=Normal[SparseArray[#->1&/@boseOc,{numbos}]];
 
 
-(*occupiedB={2,3};*)
+occupiedB=boseOc;
 
 
 (* ::Subsection:: *)
 (*Ham consts*)
 
 
-\[CapitalDelta]=8.0;
+\[CapitalDelta]=3.0;
 \[Beta]=0.721;
 \[Phi]=RandomReal[{0,2\[Pi]}];
 
@@ -100,4 +100,4 @@ dis=N@\[CapitalDelta] Cos[2\[Pi] \[Beta] # +\[Phi]]&/@Range[sites];
 hopt[t_] := 1
 
 
-intU[t_] := 10.3
+intU[t_] := 4.7
