@@ -4,7 +4,7 @@
 (*Sys*)
 
 
-tmax=10;
+tmax=35;
 steps=1000;
 times=Range[0,tmax,tmax/(steps-1)];
 
@@ -17,10 +17,10 @@ tExps=Range[tminExp,tmaxExp,(tmaxExp-tminExp)/(steps-1)];
 times=10.^#&/@tExps;*)
 
 
-runs=100;
+runs=10;
 
 
-length=8;
+length=40;
 
 
 sites=length;
@@ -43,7 +43,7 @@ bonds=Table[{n,Mod[n+1,length,1]},{n,length-1}];
 (*Initial conditions*)
 
 
-numDoub=0;
+numDoub=6;
 
 
 numOd=0;
