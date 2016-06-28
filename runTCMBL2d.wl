@@ -59,7 +59,7 @@ t1=Timing[start=makeDSolveStart[observables];];
 fullTWA=0;
 t2=Table[
 Timing[
-fullTWA+=runMeanInits[start,obsfun]/runs;
+fullTWA+=runRandomInits[start,obsfun]/runs;
 ][[1]]
 ,{rr,runs}];
 
@@ -77,8 +77,13 @@ fermOc=fullTWA[[1]]\[Transpose];
 boseOc=fullTWA[[2]]\[Transpose];
 
 
-nEven=Total[fermOc[[Range[2,numferm,2]]]];
+(*nEven=Total[fermOc[[Range[2,numferm,2]]]];
 nOdd=Total[fermOc[[Range[1,numferm,2]]]];
+imb=(nEven-nOdd)/(nEven+nOdd);*)
+
+
+nEven=Total[fermOc[[evens]]+fermOc[[evens+sites]]];
+nOdd=Total[fermOc[[odds]]+fermOc[[odds+sites]]];
 imb=(nEven-nOdd)/(nEven+nOdd);
 
 

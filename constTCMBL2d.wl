@@ -1,22 +1,22 @@
 (* ::Package:: *)
 
-(*tmax=35;
+tmax=35;
 steps=1000;
-times=Range[0,tmax,tmax/(steps-1)];*)
+times=Range[0,tmax,tmax/(steps-1)];
 
 
-tminExp=-1;
+(*tminExp=-1;
 tmaxExp=3;
 tmax=10.^tmaxExp;
 steps=1000;
 tExps=Range[tminExp,tmaxExp,(tmaxExp-tminExp)/(steps-1)];
-times=10.^#&/@tExps;
+times=10.^#&/@tExps;*)
 
 
 runs=1;
 
 
-length=4;
+length=8;
 
 
 sites=length^2;
@@ -38,7 +38,7 @@ lowPairs=Flatten[Table[{ii,jj},{ii,sites},{jj,sites+1,2sites}],1];
 (*bonds={{1,2}};*)
 
 
-bonds=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{0,1}]},{xx,0,length-1},{yy,0,length-2}],1];
+bonds=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{0,1}]},{xx,0,length-1},{yy,0,length-1}],1];
 
 
 bondsPerp={#,nfc[cfneither[#]+{0,1,0}]}&/@Range[sites];
@@ -59,10 +59,13 @@ numDoub=0;
 numOd=0;
 
 
-evens=Range[2,sites,2];
+evens=Flatten[Table[Range[(3-(-1)^i)/2+(i-1)*length,i*length,2],{i,length}]];
 
 
-odds=Range[1,sites,2];
+(*odds=Range[1,sites,2];*)
+
+
+odds=Complement[Range[sites],evens];
 
 
 doubles=RandomSample[evens,numDoub];
@@ -89,7 +92,7 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites,extraOdds];
 (*dis={1,-1};*)
 
 
-\[CapitalDelta]=5.0;
+\[CapitalDelta]=8.0;
 \[Beta]=0.721;
 \[Phi]=RandomReal[{0,2\[Pi]}];
 
@@ -97,13 +100,16 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites,extraOdds];
 (*dis=RandomReal[{-1,1},sites];*)
 
 
-dis=N@\[CapitalDelta] Cos[2\[Pi] \[Beta] # +\[Phi]]&/@Range[length];
+(*dis=N@\[CapitalDelta] Cos[2\[Pi] \[Beta] # +\[Phi]]&/@Range[length];*)
 
 
-jPerp=0.1;
+dis=N@\[CapitalDelta] RandomReal[{-1,1},{sites}];
 
 
-g[t_]:=0
+jPerp=1.0;
 
 
-\[Omega][t_]:=0
+g[t_]:=2.
+
+
+\[Omega][t_]:=10.
