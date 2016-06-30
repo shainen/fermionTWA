@@ -1,22 +1,22 @@
 (* ::Package:: *)
 
-tmax=35;
+(*tmax=35;
 steps=1000;
-times=Range[0,tmax,tmax/(steps-1)];
+times=Range[0,tmax,tmax/(steps-1)];*)
 
 
-(*tminExp=-1;
+tminExp=-1;
 tmaxExp=3;
 tmax=10.^tmaxExp;
 steps=1000;
 tExps=Range[tminExp,tmaxExp,(tmaxExp-tminExp)/(steps-1)];
-times=10.^#&/@tExps;*)
+times=10.^#&/@tExps;
 
 
 runs=10;
 
 
-length=40;
+length=8;
 
 
 sites=length;
@@ -44,7 +44,7 @@ bonds=Table[{n,Mod[n+1,length,1]},{n,length-1}]
 (*occupied=Join[Range[2,sites,4],Range[4,sites,4]+sites];*)
 
 
-numDoub=6;
+numDoub=0;
 
 
 numOd=0;
@@ -80,7 +80,7 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites,extraOdds];
 (*dis={1,-1};*)
 
 
-\[CapitalDelta]=3.0;
+\[CapitalDelta]=5.0;
 \[Beta]=0.721;
 \[Phi]=RandomReal[{0,2\[Pi]}];
 
@@ -97,4 +97,4 @@ dis=N@\[CapitalDelta] Cos[2\[Pi] \[Beta] # +\[Phi]]&/@Range[sites];
 hopt[t_] := 1.
 
 
-intU[t_] := 4.7
+intU[t_] := 2.

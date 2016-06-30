@@ -8,16 +8,16 @@
 (*setup*)
 
 
-(*SetDirectory[NotebookDirectory[]]*)
+SetDirectory[NotebookDirectory[]]
 
 
-SetDirectory[Directory[]<>"/fermionTWA"];
+(*SetDirectory[Directory[]<>"/fermionTWA"];*)
 
 
 <<randomSeed.wl
 
 
-<<2dfuncs.wl
+(*<<2dfuncs.wl*)
 
 
 <<dynComplex.wl
@@ -29,7 +29,7 @@ SetDirectory[Directory[]<>"/fermionTWA"];
 <<eqsFermiHubbardMBL.wl
 
 
-<<initsComplex.wl
+(*<<initsComplex.wl*)
 
 
 <<initsDisc.wl
@@ -70,11 +70,21 @@ obsfun=Function[{values},
 start=makeDSolveStartFermiHubbard[observables];
 
 
-eachTWA={};
-Table[
+(*eachTWA={};
+t2=Table[
+Timing[
 AppendTo[eachTWA,runDistInitsFermiHubbard[start,obsfun]];
+][[1]]
 ,{rr,runs}];
-fullTWA=Total[eachTWA]/runs;
+fullTWA=Total[eachTWA]/runs;*)
+
+
+fullTWA=0;
+t2=Table[
+Timing[
+fullTWA+=runDistInitsFermiHubbard[start,obsfun]/runs;
+][[1]]
+,{rr,runs}];
 
 
 fnumTWA=ArrayReshape[fullTWA[[1]]\[Transpose],{2,sites,steps}]\[Transpose];
