@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-tmax=35;
+tmax=20;
 steps=1000;
 times=Range[0,tmax,tmax/(steps-1)];
 
@@ -92,7 +92,7 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites,extraOdds];
 (*dis={1,-1};*)
 
 
-\[CapitalDelta]=8.0;
+\[CapitalDelta]=0.0;
 \[Beta]=0.721;
 \[Phi]=RandomReal[{0,2\[Pi]}];
 
