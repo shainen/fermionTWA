@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-tmax=20;
+tmax=275;
 steps=1000;
 times=Range[0,tmax,tmax/(steps-1)];
 

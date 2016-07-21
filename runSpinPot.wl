@@ -8,10 +8,10 @@
 (*setup*)
 
 
-SetDirectory[NotebookDirectory[]]
+(*SetDirectory[NotebookDirectory[]]*)
 
 
-(*SetDirectory[Directory[]<>"/fermionTWA"];*)
+SetDirectory[Directory[]<>"/fermionTWA"];
 
 
 <<randomSeed.wl
@@ -77,10 +77,10 @@ AppendTo[eachTWA,singleRun[start,Flatten[initsEmSx],obsfun]];
 fullTWA=Total[eachTWA]/runs;
 
 
-fnumTWA=ArrayReshape[fullTWA[[1]]\[Transpose],{2,sites,steps}]\[Transpose];
+(*fnumTWA=ArrayReshape[fullTWA[[1]]\[Transpose],{2,sites,steps}]\[Transpose];*)
 
 
-kinTermTWA=Total[2Re[fullTWA[[2]]\[Transpose][[{2,5}]]]];
+(*kinTermTWA=Total[2Re[fullTWA[[2]]\[Transpose][[{2,5}]]]];*)
 
 
 (*eachTWAC={};
@@ -96,4 +96,7 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-(*Save["dataFermion.dat",{mmu,nfup,nfdown,nbvac,nbfull,ncup,ncdown}];*)
+allData=fullTWA;
+
+
+Save["dataFermion.dat",{mmu,allData}];
