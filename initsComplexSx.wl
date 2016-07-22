@@ -33,6 +33,10 @@ randMatEm := SymmetrizedArray[{i_, j_} :> Re[discRandomEm[i, j]], {numferm, numf
 randMatEl := Normal@SymmetrizedArray[{i_, j_} :>discRandomEl[i,j], {numferm, numferm}, Antisymmetric[{1, 2}]]
 
 
+(*randMatEm := SymmetrizedArray[{i_, j_} :> Re[meanEm[i, j]], {numferm, numferm}, Symmetric[{1, 2}]] + I SymmetrizedArray[{i_, j_} :>Im[meanEm[i, j]], {numferm, numferm}, Antisymmetric[{1, 2}]]
+randMatEl := Normal@SymmetrizedArray[{i_, j_} :>discRandomEl[i,j], {numferm, numferm}, Antisymmetric[{1, 2}]]*)
+
+
 divide[mat_]:=Partition[mat,{numferm/2,numferm/2}]
 
 
