@@ -5,7 +5,7 @@ steps=1000;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=10;
+runs=1;
 
 
 length=7;
@@ -22,7 +22,7 @@ lowPairs={};*)
 
 
 midPairs=Flatten[Table[Table[{ii,jj},{jj,ii,numferm}],{ii,numferm}],1];
-lowPairs={};
+lowPairs=Flatten[Table[Table[{ii,jj},{jj,ii+1,numferm}],{ii,numferm}],1];
 
 
 (*bonds=Table[{n,Mod[n+1,length,1]},{n,length}]*)
