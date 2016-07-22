@@ -12,7 +12,7 @@ hamShift=Total[(
 x0 Sqrt[#-1]/Sqrt[2](hEm[#,#-1]-hEm[#+sites,#-1+sites]+hEm[#-1,#]-hEm[#-1+sites,#+sites])
 )&/@Range[2,sites]],
 hamInt=Total[( 
-int[#1-1,#2-1,#3-1,#4-1](-vEm[#1,#2+sites]hEm[#3+sites,#4]-hEm[#1,#2+sites]vEm[#3+sites,#4]+KroneckerDelta[#2,#3]hEm[#1,#4])
+int[#1-1,#2-1,#3-1,#4-1](-vEm[#1,#2+sites]hEm[#3+sites,#4]-hEm[#1,#2+sites]vEm[#3+sites,#4]+KroneckerDelta[#2,#3]hEm[#1,#4]/2+KroneckerDelta[#1,#4]hEm[#2+sites,#3+sites]/2)
 )&@@@Tuples[Range[sites],4]],
 eqnsEm,eqnsEl,initsEm,initsEl,start
 },
