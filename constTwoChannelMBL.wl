@@ -16,7 +16,7 @@ times=10.^#&/@tExps;
 runs=1;
 
 
-length=8;
+length=40;
 
 
 sites=length;
@@ -86,7 +86,7 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites,extraOdds];
 (*dis={1,-1};*)
 
 
-\[CapitalDelta]=5.0;
+\[CapitalDelta]=3.0;
 \[Beta]=0.721;
 \[Phi]=RandomReal[{0,2\[Pi]}];
 

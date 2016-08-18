@@ -13,7 +13,7 @@ tExps=Range[tminExp,tmaxExp,(tmaxExp-tminExp)/(steps-1)];
 times=10.^#&/@tExps;*)
 
 
-runs=1;
+runs=10;
 
 
 length=8;
@@ -38,10 +38,16 @@ lowPairs=Flatten[Table[{ii,jj},{ii,sites},{jj,sites+1,2sites}],1];
 (*bonds={{1,2}};*)
 
 
-bonds=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{0,1}]},{xx,0,length-1},{yy,0,length-1}],1];
+bonds=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{0,1}]},{xx,0,length-1},{yy,0,length-2}],1];
 
 
-bondsPerp={#,nfc[cfneither[#]+{0,1,0}]}&/@Range[sites];
+bondsPerp=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{1,0}]},{xx,0,length-2},{yy,0,length-1}],1];
+
+
+(*bonds={#,nfc[cfneither[#]+{0,0,1}]}&/@Range[sites]*)
+
+
+(*bondsPerp={#,nfc[cfneither[#]+{0,1,0}]}&/@Range[sites]*)
 
 
 coh=Table[0,{numbos}];
@@ -92,18 +98,19 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites,extraOdds];
 (*dis={1,-1};*)
 
 
-\[CapitalDelta]=0.0;
+\[CapitalDelta]=8.0;
 \[Beta]=0.721;
-\[Phi]=RandomReal[{0,2\[Pi]}];
+\[Phi]1=RandomReal[{0,2\[Pi]}];
+\[Phi]2=RandomReal[{0,2\[Pi]}];
 
 
 (*dis=RandomReal[{-1,1},sites];*)
 
 
-(*dis=N@\[CapitalDelta] Cos[2\[Pi] \[Beta] # +\[Phi]]&/@Range[length];*)
+dis=Flatten[Table[N@\[CapitalDelta] (Cos[2\[Pi] \[Beta] xx +\[Phi]1]+Cos[2\[Pi] \[Beta] yy +\[Phi]2])/2,{xx,length},{yy,length}]];
 
 
-dis=N@\[CapitalDelta] RandomReal[{-1,1},{sites}];
+(*dis=N@\[CapitalDelta] RandomReal[{-1,1},{sites}];*)
 
 
 jPerp=1.0;
