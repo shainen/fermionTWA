@@ -65,7 +65,10 @@ numDoub=0;
 numOd=0;
 
 
-evens=Flatten[Table[Range[(3-(-1)^i)/2+(i-1)*length,i*length,2],{i,length}]];
+(*evens=Flatten[Table[Range[(3-(-1)^i)/2+(i-1)*length,i*length,2],{i,length}]];*)
+
+
+evens=Flatten[Table[nfc[{xx,yy}],{xx,1,length-1,2},{yy,0,length-1}]];
 
 
 (*odds=Range[1,sites,2];*)
