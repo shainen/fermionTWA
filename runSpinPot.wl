@@ -70,11 +70,17 @@ obsfun=Function[{values},
 start=makeDSolveStartFermiHubbard[observables];
 
 
-eachTWA={};
+(*eachTWA={};
 Table[
 AppendTo[eachTWA,singleRun[start,Flatten[initsEmSx],obsfun]];
 ,{rr,runs}];
-fullTWA=Total[eachTWA]/runs;
+fullTWA=Total[eachTWA]/runs;*)
+
+
+fullTWA=0;
+Table[
+AddTo[fullTWA,singleRun[start,Flatten[initsEmSx],obsfun]/runs];
+,{rr,runs}];
 
 
 (*fnumTWA=ArrayReshape[fullTWA[[1]]\[Transpose],{2,sites,steps}]\[Transpose];*)
