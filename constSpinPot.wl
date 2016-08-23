@@ -32,3 +32,8 @@ lowPairs=Flatten[Table[Table[{ii,jj},{jj,ii+1,numferm}],{ii,numferm}],1];
 
 
 occupied={1,2,3,4,5};
+
+
+sym1=1;
+sym2=0;
+sym3=0;
