@@ -45,7 +45,7 @@ avg=Total[eachOne]/Length[list];
 dir=StringSplit[ParentDirectory[],"/"][[5]];
 
 
-import[dir,100,{},10];
+import[dir,10,{},1];
 
 
 Save["/data/shainen/"<>dir<>"compiled.dat",{avg,eachOne}];
