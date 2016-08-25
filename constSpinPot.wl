@@ -8,7 +8,7 @@ times=Range[0,tmax,tmax/(steps-1)];
 runs=10;
 
 
-length=7;
+length=9;
 
 
 sites=length;
