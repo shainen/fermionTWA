@@ -13,10 +13,10 @@ tExps=Range[tminExp,tmaxExp,(tmaxExp-tminExp)/(steps-1)];
 times=10.^#&/@tExps;*)
 
 
-runs=10;
+runs=1;
 
 
-length=8;
+length=12;
 
 
 sites=length^2;
@@ -102,7 +102,8 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites,extraOdds];
 
 
 \[CapitalDelta]=8.0;
-\[Beta]=0.721;
+\[Beta]1=0.721;
+\[Beta]2=0.692;
 \[Phi]1=RandomReal[{0,2\[Pi]}];
 \[Phi]2=RandomReal[{0,2\[Pi]}];
 
@@ -110,7 +111,7 @@ occupied=Join[doubles,doubles+sites,ups,downs+sites,extraOdds];
 (*dis=RandomReal[{-1,1},sites];*)
 
 
-dis=Flatten[Table[N@\[CapitalDelta] (Cos[2\[Pi] \[Beta] xx +\[Phi]1]+Cos[2\[Pi] \[Beta] yy +\[Phi]2])/2,{xx,length},{yy,length}]];
+dis=Flatten[Table[N@\[CapitalDelta] (Cos[2\[Pi] \[Beta]1 xx +\[Phi]1]+Cos[2\[Pi] \[Beta]2 yy +\[Phi]2])/2,{xx,length},{yy,length}]];
 
 
 (*dis=N@\[CapitalDelta] RandomReal[{-1,1},{sites}];*)
