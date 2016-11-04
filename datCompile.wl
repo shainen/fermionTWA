@@ -124,13 +124,13 @@ fullList
 import[rname_,runs_]:=(
 fullList={};
 Table[If[FileExistsQ["/projectnb/twambl/"<>rname<>"/r"<>ToString[kk]<>"/dataFermion.dat"],AppendTo[fullList,kk]],{kk,1,runs}];
-comb=Quotient[Length[fullList],10];
+comb=Quotient[Length[fullList],1];
 list=Partition[fullList,comb];
 eachOne={};
 Do[
 tempAll=0;
 Do[
-Get["/projectnb/twambl/"<>rname<>"/r"<>ToString[kk]<>"/dataTWA.dat"];
+Get["/projectnb/twambl/"<>rname<>"/r"<>ToString[kk]<>"/dataFermion.dat"];
 data=allData;
 AddTo[tempAll,data];
 ,{kk,rr}];
