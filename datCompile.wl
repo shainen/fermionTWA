@@ -123,7 +123,7 @@ fullList
 
 import[rname_,runs_]:=(
 fullList={};
-Table[If[FileExistsQ["/projectnb/twambl/"<>rname<>"/r"<>ToString[kk]<>"/dataTWA.dat"],AppendTo[fullList,kk]],{kk,1,runs}];
+Table[If[FileExistsQ["/projectnb/twambl/"<>rname<>"/r"<>ToString[kk]<>"/dataFermion.dat"],AppendTo[fullList,kk]],{kk,1,runs}];
 comb=Quotient[Length[fullList],10];
 list=Partition[fullList,comb];
 eachOne={};
