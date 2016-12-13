@@ -33,7 +33,7 @@ Do[
 tempAll=0;
 Do[
 Get["/data/shainen/"<>rname<>"/r"<>ToString[kk]<>"/dataFermion.dat"];
-data=allData;
+data={fermOc,boseOc};
 AddTo[tempAll,data];
 ,{kk,rr}];
 AppendTo[eachOne,tempAll/comb];
@@ -45,7 +45,7 @@ avg=Total[eachOne]/Length[list];
 dir=StringSplit[ParentDirectory[],"/"][[5]];
 
 
-import[dir,10,{},1];
+import[dir,100,{},1];
 
 
-Save["/data/shainen/"<>dir<>"compiled.dat",{avg,eachOne}];
+Save["/data/shainen/"<>dir<>"compiled.dat",{avg}];
