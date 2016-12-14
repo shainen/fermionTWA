@@ -45,7 +45,7 @@ coh=Table[0,{numbos}];
 occupied=Join[#,#+sites]&[{7,8,9}];
 
 
-bonds=Table[{i,i+1},{i,sites-1}];
+bonds=Table[{i,Mod[i+1,sites,1]},{i,sites}];
 
 
 (*finMu=10;*)
