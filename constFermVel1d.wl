@@ -54,10 +54,10 @@ bonds=Table[{i,i+1},{i,sites-1}];
 (*\[Omega][t_]:=-finMu(1-E^(-t^2/tscale^2))*)
 
 
-\[Omega][t_]:=10.
+\[Omega][t_]:=5.
 
 
 (*g[t_]:=(1-E^(-t^2/tscale^2))*)
 
 
-g[t_]:=2.
+g[t_]:=1.
