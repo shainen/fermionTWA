@@ -27,6 +27,9 @@ lowPairs=Flatten[Table[{ii,jj},{ii,length},{jj,length+1,2length}],1];
 bonds=Flatten[Table[Table[{i,j},{j,i+1,sites}],{i,sites-1}],1];
 
 
+alpha=2;
+
+
 hopt[t_] := 1.
 
 
