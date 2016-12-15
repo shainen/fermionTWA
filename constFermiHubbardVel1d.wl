@@ -40,3 +40,8 @@ intU[t_] := 0.
 
 
 occupied=Join[#,#+sites]&[{7,8,9}];
+
+
+sym1 = 1;
+sym2 = 0;
+sym3 = 0;

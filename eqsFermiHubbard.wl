@@ -6,8 +6,14 @@ hamKin=Total[1/Abs[#1-#2]^alpha (
 hEm[#1,#2]+hEm[#1+sites,#2+sites]
 +hEm[#2,#1]+hEm[#2+sites,#1+sites]
 )&@@@bonds],
-hamInt=Total[( 
-vEm[#,#]hEm[#+sites,#+sites]+hEm[#,#]vEm[#+sites,#+sites]
+hamInt=Total[(
+sym1*((vEm[#,#]+KroneckerDelta[#,#]/2)hEm[#+sites,#+sites]+hEm[#,#](vEm[#+sites,#+sites]+KroneckerDelta[#,#]/2))
++sym2*(-(vEm[#,#+sites]hEm[#+sites,#]+hEm[#,#+sites]vEm[#+sites,#])
++KroneckerDelta[#,#]hEm[#,#]/2
++KroneckerDelta[#,#]hEm[#+sites,#+sites]/2)
++sym3*(-(vEu[#,#+sites]hEl[#,#+sites]+hEu[#,#+sites]vEl[#,#+sites])
++KroneckerDelta[#,#]hEm[#+sites,#+sites]/2
++KroneckerDelta[#,#]hEm[#,#]/2)
 )&/@Range[sites]],
 eqnsEm,eqnsEl,initsEm,initsEl,start
 },
