@@ -33,7 +33,7 @@ alpha=1;
 hopt[t_] := 1.
 
 
-intU[t_] := 0.
+intU[t_] := 1.
 
 
 (*occupied=Join[nfc/@(Position[fermenergy,_?Negative,2]-1),nfc/@(Position[fermenergy,0.,2]-1),nfc/@(Position[fermenergy,_?Negative,2]-1)+sites,nfc/@(Position[fermenergy,0.,2]-1)+sites];*)
@@ -43,5 +43,5 @@ occupied=Join[#,#+sites]&[{7,8,9}];
 
 
 sym1 = 0;
-sym2 = 1;
-sym3 = 0;
+sym2 = 0;
+sym3 = 1;
