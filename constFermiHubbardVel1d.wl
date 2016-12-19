@@ -27,7 +27,7 @@ lowPairs=Flatten[Table[{ii,jj},{ii,length},{jj,length+1,2length}],1];
 bonds=Flatten[Table[Table[{i,j},{j,i+1,sites}],{i,sites-1}],1];
 
 
-alpha=2;
+alpha=1;
 
 
 hopt[t_] := 1.
@@ -42,6 +42,6 @@ intU[t_] := 0.
 occupied=Join[#,#+sites]&[{7,8,9}];
 
 
-sym1 = 1;
-sym2 = 0;
+sym1 = 0;
+sym2 = 1;
 sym3 = 0;
