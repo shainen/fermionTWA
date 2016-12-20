@@ -17,8 +17,13 @@ sites=length;
 numferm=2 sites;
 
 
-midPairs=Flatten[{Table[Table[{ii,jj},{jj,ii,length}],{ii,length}],Table[Table[{ii,jj},{jj,ii,2length}],{ii,length+1,2length}]},2];
-lowPairs=Flatten[Table[{ii,jj},{ii,length},{jj,length+1,2length}],1];
+(* ::Input:: *)
+(*(*midPairs=Flatten[{Table[Table[{ii,jj},{jj,ii,length}],{ii,length}],Table[Table[{ii,jj},{jj,ii,2length}],{ii,length+1,2length}]},2];*)
+(*lowPairs=Flatten[Table[{ii,jj},{ii,length},{jj,length+1,2length}],1];*)*)
+
+
+midPairs=Flatten[Table[Table[{ii,jj},{jj,ii,numferm}],{ii,numferm}],1];
+lowPairs={};
 
 
 (*bonds=Table[{n,Mod[n+1,length,1]},{n,length}]*)
@@ -43,5 +48,5 @@ occupied=Join[#,#+sites]&[{7,8,9}];
 
 
 sym1 = 0;
-sym2 = 0;
-sym3 = 1;
+sym2 = 1;
+sym3 = 0;
