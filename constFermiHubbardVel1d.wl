@@ -8,7 +8,7 @@ times=N[Range[0,tmax-tmax/steps,tmax/steps]];
 runs=100;
 
 
-length=15;
+length=16;
 
 
 sites=length;
@@ -44,9 +44,9 @@ intU[t_] := 1.
 (*occupied=Join[nfc/@(Position[fermenergy,_?Negative,2]-1),nfc/@(Position[fermenergy,0.,2]-1),nfc/@(Position[fermenergy,_?Negative,2]-1)+sites,nfc/@(Position[fermenergy,0.,2]-1)+sites];*)
 
 
-occupied=Join[#,#+sites]&[{7,8,9}];
+occupied=Join[#,#+sites]&[{7,8,9,10}];
 
 
-sym1 = 0;
-sym2 = 1;
+sym1 = 1;
+sym2 = 0;
 sym3 = 0;
