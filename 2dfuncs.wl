@@ -10,6 +10,9 @@ cfneither[num_]:=IntegerDigits[num-1,length,3]
 nfc[coord_]:=FromDigits[addl[coord],length]+1
 
 
+distance[num1_,num2_]:=Norm[cfneither[num1]-cfneither[num2]]
+
+
 addl[num_]:=Mod[num,length]
 
 

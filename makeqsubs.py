@@ -33,7 +33,7 @@ cd ${prj}
 echo "SeedRandom[$$PBS_ARRAYID]" > randomSeed.wl
 cd ..
 # time math -script ${prj}/runTCMBL2d.wl
-time math -script ${prj}/runFermiHubbardVel1d.wl
+time math -script ${prj}/runFermiHubbardVel2d.wl
 
 # Remove the now-useless files
 rm -r ${prj} 

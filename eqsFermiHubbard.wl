@@ -2,7 +2,7 @@
 
 makeDSolveStartFermiHubbard=Function[{observables},
 Block[{
-hamKin=Total[1/Abs[#1-#2]^alpha (
+hamKin=Total[1/distance[#1,#2]^alpha (
 hEm[#1,#2]+hEm[#1+sites,#2+sites]
 +hEm[#2,#1]+hEm[#2+sites,#1+sites]
 )&@@@bonds],
