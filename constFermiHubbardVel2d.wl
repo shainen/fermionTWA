@@ -33,7 +33,16 @@ lowPairs={};
 (*bonds=Table[{n,Mod[n+1,length,1]},{n,length}]*)
 
 
-bonds=Flatten[Table[Table[{i,j},{j,i+1,sites}],{i,sites-1}],1];
+(*bonds=Flatten[Table[Table[{i,j},{j,i+1,sites}],{i,sites-1}],1];*)
+
+
+bondsHor=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{0,1}]},{xx,0,length-1},{yy,0,length-2}],1];
+
+
+bondsPerp=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{1,0}]},{xx,0,length-2},{yy,0,length-1}],1];
+
+
+bonds=Join[bondsHor,bondsPerp];
 
 
 alpha=1;
