@@ -10,7 +10,7 @@ splitTimes=Split[times,!Or@@Table[#1<m tmax/split<=#2,{m,split-1}]&];
 runs=1;
 
 
-length=16;
+length=8;
 
 
 sites=length^2;
@@ -35,7 +35,16 @@ lowPairs={};
 (*bonds=Table[{n,Mod[n+1,length,1]},{n,length}]*)
 
 
-bonds=Flatten[Table[Table[{i,j},{j,i+1,sites}],{i,sites-1}],1];
+(*bonds=Flatten[Table[Table[{i,j},{j,i+1,sites}],{i,sites-1}],1];*)
+
+
+bondsHor=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{0,1}]},{xx,0,length-1},{yy,0,length-2}],1];
+
+
+bondsPerp=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{1,0}]},{xx,0,length-2},{yy,0,length-1}],1];
+
+
+bonds=Join[bondsHor,bondsPerp];
 
 
 alpha=1;
@@ -50,7 +59,10 @@ intU[t_] := 1.
 (*occupied=Join[nfc/@(Position[fermenergy,_?Negative,2]-1),nfc/@(Position[fermenergy,0.,2]-1),nfc/@(Position[fermenergy,_?Negative,2]-1)+sites,nfc/@(Position[fermenergy,0.,2]-1)+sites];*)
 
 
-middle=Flatten[Table[nfc[{i,j}],{i,4,11},{j,4,11}]];
+middle=Flatten[Table[nfc[{i,j}],{i,length/4,length/4+length/2-1},{j,length/4,length/4+length/2-1}]];
+
+
+(*middle=Flatten[Table[nfc[{i,j}],{i,4,11},{j,4,11}]];*)
 
 
 occupied=Join[#,#+sites]&[middle];
