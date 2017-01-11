@@ -10,7 +10,7 @@ splitTimes=Split[times,!Or@@Table[#1<m tmax/split<=#2,{m,split-1}]&];
 runs=1;
 
 
-length=8;
+length=16;
 
 
 sites=length^2;
