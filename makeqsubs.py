@@ -10,7 +10,7 @@ topic=getcwd().split('/')[-4]
 qsubfile = Template("""
 #!/bin/sh
 #PBS -j oe
-#PBS -l mem=200mb
+#PBS -l mem=32000mb
 #PBS -V
 #PBS -m ea
 #PBS -M shainen@gmail.com
