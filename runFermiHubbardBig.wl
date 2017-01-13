@@ -68,7 +68,10 @@ obsfun=Function[{values},
 (*start=makeDSolveStart[observables];*)
 
 
-start=makeDSolveStartFermiHubbard[observables];
+(*start=makeDSolveStartFermiHubbard[observables];*)
+
+
+Get[pathToStart];
 
 
 (*eachTWA={};
