@@ -71,7 +71,7 @@ obsfun=Function[{values},
 (*start=makeDSolveStartFermiHubbard[observables];*)
 
 
-Get[pathToStart];
+t1=Timing[Get[pathToStart]];
 
 
 (*eachTWA={};
@@ -128,4 +128,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["dataFermion.dat",{mmu,fermOc}];
+Save["dataFermion.dat",{mmu,t1,fermOc}];

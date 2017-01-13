@@ -3,7 +3,7 @@
 pathToStart="/data/shainen/170112_1_s12s_FH2d_nn_u1_start/r/start.dat";
 
 
-tmax=0.1;
+tmax=10;
 steps=1000;
 times=N[Range[0,tmax-tmax/steps,tmax/steps]];
 split=1;
