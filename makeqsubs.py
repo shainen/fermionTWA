@@ -10,7 +10,7 @@ topic=getcwd().split('/')[-4]
 qsubfile = Template("""
 #!/bin/sh
 #PBS -j oe
-#PBS -l mem=32000mb
+#PBS -l mem=500mb
 #PBS -V
 #PBS -m ea
 #PBS -M shainen@gmail.com
@@ -33,7 +33,7 @@ cd ${prj}
 echo "SeedRandom[$$PBS_ARRAYID]" > randomSeed.wl
 cd ..
 # time math -script ${prj}/runTCMBL2d.wl
-time math -script ${prj}/startFermiHubbardBig.wl
+time math -script ${prj}/runFermiHubbardVel1d.py
 
 # Remove the now-useless files
 rm -r ${prj} 
