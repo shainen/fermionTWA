@@ -1,12 +1,12 @@
 (* ::Package:: *)
 
-pathToStart="/data/shainen/170112_1_s12s_FH2d_nn_u1_start/r/start.dat";
+pathToStart="/data/shainen/170112_2_s12s_FH2d_lr_u1_start/r/start.dat";
 
 
 tmax=10;
 steps=1000;
 times=N[Range[0,tmax-tmax/steps,tmax/steps]];
-split=1;
+split=10;
 splitTimes=Split[times,!Or@@Table[#1<m tmax/split<=#2,{m,split-1}]&];
 
 
@@ -38,16 +38,16 @@ lowPairs={};
 (*bonds=Table[{n,Mod[n+1,length,1]},{n,length}]*)
 
 
-(*bonds=Flatten[Table[Table[{i,j},{j,i+1,sites}],{i,sites-1}],1];*)
+bonds=Flatten[Table[Table[{i,j},{j,i+1,sites}],{i,sites-1}],1];
 
 
-bondsHor=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{0,1}]},{xx,0,length-1},{yy,0,length-2}],1];
+(*bondsHor=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{0,1}]},{xx,0,length-1},{yy,0,length-2}],1];*)
 
 
-bondsPerp=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{1,0}]},{xx,0,length-2},{yy,0,length-1}],1];
+(*bondsPerp=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{1,0}]},{xx,0,length-2},{yy,0,length-1}],1];*)
 
 
-bonds=Join[bondsHor,bondsPerp];
+(*bonds=Join[bondsHor,bondsPerp];*)
 
 
 alpha=1;
