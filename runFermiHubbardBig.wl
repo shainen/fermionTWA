@@ -97,16 +97,17 @@ Table[
 t2=Timing[stuff=singleRunShort[start,randomInitsFermiHubbard,firstTime];];
 (*stuff=singleRunShort[start,meanInitsOR,firstTime];*)
 lastTime=Last@firstTime;
+t3={};
 Table[
-t3=Timing[stuff=Join[stuff,singleRunShort[start,Flatten[randomInitsFHMid[lastTime,Last@stuff]],trange]];];
+AppendTo[t3,Timing[stuff=Join[stuff,singleRunShort[start,Flatten[randomInitsFHMid[lastTime,Last@stuff]],trange]];]];
 lastTime=Last@trange;
 ,{trange,nextTimes}];
 t4=Timing[newObs=Chop[obsfun/@stuff];];
-AddTo[fullTWA,newObs/runs];
+t5=Timing[AddTo[fullTWA,newObs/runs];];
 ,{rr,runs}];]
 
 
-fermOc=fullTWA[[All,1]]\[Transpose];
+t6=Timing[fermOc=fullTWA[[All,1]]\[Transpose];];
 
 
 (*fnumTWA=ArrayReshape[fullTWA[[1]]\[Transpose],{2,sites,steps}]\[Transpose];*)
@@ -128,4 +129,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["dataFermion.dat",{mmu,t1,t2,t3,t4,fermOc}];
+Save["dataFermion.dat",{mmu,t1,t2,t3,t4,t5,t6,fermOc}];
