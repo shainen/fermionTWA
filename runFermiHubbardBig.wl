@@ -14,6 +14,10 @@
 SetDirectory[Directory[]<>"/fermionTWA"];
 
 
+SetSystemOptions["ParallelOptions" -> "ParallelThreadNumber" -> 1];
+SetSystemOptions["MKLThreads" -> 1];
+
+
 <<randomSeed.wl
 
 
