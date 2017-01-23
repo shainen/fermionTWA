@@ -1,16 +1,16 @@
 (* ::Package:: *)
 
-pathToStart="/project/twambl/FermVel/s12s_FH2d_lr_u1_start/start.dat";
+pathToStart="/project/twambl/FermVel/s12s_FH2d_lr_u2_start/start.dat";
 
 
 tmax=10;
-steps=100;
+steps=1000;
 times=N[Range[0,tmax-tmax/steps,tmax/steps]];
 split=10;
 splitTimes=Split[times,!Or@@Table[#1<m tmax/split<=#2,{m,split-1}]&];
 
 
-runs=1;
+runs=10;
 
 
 length=12;
@@ -56,7 +56,7 @@ alpha=1;
 hopt[t_] := 1.
 
 
-intU[t_] := 0.
+intU[t_] := 2.
 
 
 (*occupied=Join[nfc/@(Position[fermenergy,_?Negative,2]-1),nfc/@(Position[fermenergy,0.,2]-1),nfc/@(Position[fermenergy,_?Negative,2]-1)+sites,nfc/@(Position[fermenergy,0.,2]-1)+sites];*)
