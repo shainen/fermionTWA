@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-pathToStart="/project/twambl/FermVel/s12s_FH2d_lr_u2_start/start.dat";
+pathToStart="/project/twambl/FermVel/s12s_FH2d_nn_u2_start/start.dat";
 
 
 tmax=10;
