@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-pathToStart="/project/twambl/FermVel/s12s_FH2d_nn_u2_start/start.dat";
+pathToStart="/project/twambl/FermVel/s12s_FH2d_lr_u0_start/start.dat";
 
 
 tmax=10;
@@ -38,16 +38,16 @@ lowPairs={};
 (*bonds=Table[{n,Mod[n+1,length,1]},{n,length}]*)
 
 
-(*bonds=Flatten[Table[Table[{i,j},{j,i+1,sites}],{i,sites-1}],1];*)
+bonds=Flatten[Table[Table[{i,j},{j,i+1,sites}],{i,sites-1}],1];
 
 
-bondsHor=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{0,1}]},{xx,0,length-1},{yy,0,length-2}],1];
+(*bondsHor=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{0,1}]},{xx,0,length-1},{yy,0,length-2}],1];*)
 
 
-bondsPerp=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{1,0}]},{xx,0,length-2},{yy,0,length-1}],1];
+(*bondsPerp=Flatten[Table[{nfc[{xx,yy}],nfc[{xx,yy}+{1,0}]},{xx,0,length-2},{yy,0,length-1}],1];*)
 
 
-bonds=Join[bondsHor,bondsPerp];
+(*bonds=Join[bondsHor,bondsPerp];*)
 
 
 alpha=1;
@@ -56,7 +56,7 @@ alpha=1;
 hopt[t_] := 1.
 
 
-intU[t_] := 2.
+intU[t_] := 0.
 
 
 (*occupied=Join[nfc/@(Position[fermenergy,_?Negative,2]-1),nfc/@(Position[fermenergy,0.,2]-1),nfc/@(Position[fermenergy,_?Negative,2]-1)+sites,nfc/@(Position[fermenergy,0.,2]-1)+sites];*)
