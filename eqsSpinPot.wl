@@ -18,7 +18,7 @@ int[#1-1,#2-1,#3-1,#4-1]
 +KroneckerDelta[#1,#4]hEm[#3+sites,#2+sites]/2)
 )&@@@Tuples[Range[sites],4]],*)
 hamInt=Total[( 
-int[#1-1,#2-1,#3-1,#4-1]
+KroneckerDelta[#1,#2]KroneckerDelta[#3,#4]int[#1-1,#2-1,#3-1,#4-1]
 (
 sym1*((vEm[#1,#2]+KroneckerDelta[#1,#2]/2)hEm[#3+sites,#4+sites]+hEm[#1,#2](vEm[#3+sites,#4+sites]+KroneckerDelta[#3,#4]/2))
 +sym2*(-(vEm[#1,#2+sites]hEm[#3+sites,#4]+hEm[#1,#2+sites]vEm[#3+sites,#4])
