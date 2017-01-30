@@ -9,7 +9,7 @@ If[Min[list[[1]]]<Min[list[[2]]],1,
 If[Min[list[[1]]]>Min[list[[2]]],2,
 If[Max[list[[1]]]<Max[list[[2]]],1,
 If[Max[list[[1]]]>Max[list[[2]]],2,
-3
+1
 ]
 ]
 ]
