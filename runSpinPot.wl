@@ -26,7 +26,7 @@ SetDirectory[Directory[]<>"/fermionTWA"];
 <<constSpinPot.wl
 
 
-<<eqsSpinPot.wl
+<<eqsSpinPotChoose.wl
 
 
 <<initsComplexSx.wl
@@ -102,7 +102,10 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-allData=fullTWA;
+(*allData=fullTWA;*)
 
 
-Save["dataFermion.dat",{mmu,allData}];
+fermOc=fullTWA;
+
+
+Save["dataFermion.dat",{mmu,fermOc}];
