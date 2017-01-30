@@ -9,7 +9,7 @@ If[Min[list[[1]]]<Min[list[[2]]],1,
 If[Min[list[[1]]]>Min[list[[2]]],2,
 If[Max[list[[1]]]<Max[list[[2]]],1,
 If[Max[list[[1]]]>Max[list[[2]]],2,
-2
+3
 ]
 ]
 ]
@@ -19,6 +19,7 @@ hamFunc[1,a_,b_,c_,d_]:=((vEm[#1,#2]+KroneckerDelta[#1,#2]/2)hEm[#3+sites,#4+sit
 hamFunc[2,a_,b_,c_,d_]:=(-(vEm[#1,#4+sites]hEm[#3+sites,#2]+hEm[#1,#4+sites]vEm[#3+sites,#2])
 +KroneckerDelta[#3,#4]hEm[#1,#2]/2
 +KroneckerDelta[#1,#2]hEm[#3+sites,#4+sites]/2)&[a,b,c,d]
+hamFunc[3,a_,b_,c_,d_]:=(hamFunc[1,a,b,c,d]+hamFunc[2,a,b,c,d])/2
 makeDSolveStartFermiHubbard=Function[{observables},
 Block[{
 hamKin=Total[(
