@@ -9,7 +9,7 @@ If[Min[list[[1]]]<Min[list[[2]]],1,
 If[Min[list[[1]]]>Min[list[[2]]],2,
 If[Max[list[[1]]]<Max[list[[2]]],1,
 If[Max[list[[1]]]>Max[list[[2]]],2,
-1
+3
 ]
 ]
 ]
@@ -37,7 +37,7 @@ int[#1-1,#2-1,#3-1,#4-1]
 hamInt=Total[( 
 int[#1-1,#2-1,#3-1,#4-1]
 (
-(1-KroneckerDelta[#1,#3])(KroneckerDelta[#1,#2]KroneckerDelta[#3,#4]+KroneckerDelta[#1,#4]KroneckerDelta[#3,#2])hamFunc[choose[#1,#2,#3,#4],#1,#2,#3,#4]
+(1-KroneckerDelta[#1,#3]/2)(KroneckerDelta[#1,#2]KroneckerDelta[#3,#4]+KroneckerDelta[#1,#4]KroneckerDelta[#3,#2])hamFunc[choose[#1,#2,#3,#4],#1,#2,#3,#4]
 )
 )&@@@Tuples[Range[sites],4]],
 eqnsEm,eqnsEl,initsEm,initsEl,start
