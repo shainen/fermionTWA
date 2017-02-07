@@ -12,7 +12,6 @@ qsubfile = Template("""
 
 #$$ -j y
 #$$ -l h_rt=12:00:00
-#$$ -l mem_per_core=8G
 #$$ -V
 #$$ -m ea
 #$$ -M shainen@gmail.com
@@ -34,7 +33,7 @@ cd $$SCRATCH_DIR/
 cd ${prj}
 echo "SeedRandom[$$SGE_TASK_ID]" > randomSeed.wl
 cd ..
-time math -script ${prj}/runSpinPot.wl
+time math -script ${prj}/startSYK.wl
 
 # Remove the now-useless files
 rm -r ${prj} 
