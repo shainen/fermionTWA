@@ -68,8 +68,10 @@ obsfun=Function[{values},
 (*start=makeDSolveStart[observables];*)
 
 
-file=Import["/projectnb/twambl/170207_1_s16f4/flatJcoup.CSV","Data"];
-Jcoup=ArrayReshape[file,{sites,sites,sites,sites}];
+real=Import["/projectnb/twambl/170207_1_s16f4/flatJreal.CSV","Data"];
+imag=Import["/projectnb/twambl/170207_1_s16f4/flatJimag.CSV","Data"];
+complex=real+I*imag;
+Jcoup=ArrayReshape[complex,{sites,sites,sites,sites}];
 
 
 Timing[start=makeDSolveStartSYK[observables];]
