@@ -6,8 +6,8 @@ hamInt=Total[(Jcoup[[#1,#2,#3,#4]](
 -(
 (vEm[#1,#3]+KroneckerDelta[#1,#3]/2)hEm[#2,#4]
 +hEm[#1,#3](vEm[#2,#4]+KroneckerDelta[#2,#4]/2)
-+KroneckerDelta[#2,#3]hEm[#1,#4]/2
--KroneckerDelta[#1,#4]hEm[#2,#3]/2
+(*+KroneckerDelta[#2,#3]hEm[#1,#4]/2
+-KroneckerDelta[#1,#4]hEm[#2,#3]/2*)
 )
 +KroneckerDelta[#2,#3]hEm[#1,#4]
 )

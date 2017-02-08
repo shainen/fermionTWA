@@ -8,10 +8,10 @@
 (*setup*)
 
 
-SetDirectory[NotebookDirectory[]]
+(*SetDirectory[NotebookDirectory[]]*)
 
 
-(*SetDirectory[Directory[]<>"/fermionTWA"];*)
+SetDirectory[Directory[]<>"/fermionTWA"];
 
 
 SetSystemOptions["ParallelOptions" -> "ParallelThreadNumber" -> 1];
@@ -96,8 +96,8 @@ fullTWA=0;
 firstTime=First@splitTimes;
 nextTimes=Drop[splitTimes,1];
 Table[
-t2=Timing[stuff=singleRunShort[start,randomInitsFermiHubbard,firstTime];];
-(*stuff=singleRunShort[start,meanInitsFermiHubbard,firstTime];*)
+(*t2=Timing[stuff=singleRunShort[start,randomInitsFermiHubbard,firstTime];];*)
+stuff=singleRunShort[start,meanInitsFermiHubbard,firstTime];
 lastTime=Last@firstTime;
 t3={};
 Table[
