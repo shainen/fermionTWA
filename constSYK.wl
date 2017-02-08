@@ -1,11 +1,25 @@
 (* ::Package:: *)
 
-tmax=10;
-steps=1000;
+(*pathToStart="/projectnb/twambl/170207_2_startTWA/rundefined/start.dat";*)
+
+
+pathToJcoup="/projectnb/twambl/170207_1_s16f4/";
+
+
+(*pathToStart="/Users/shainen/Dropbox/Research/fTWA/SYK model/data/start.dat";*)
+
+
+(*pathToJcoup="/Users/shainen/Dropbox/Research/fTWA/SYK model/data/170207_1_s16f4/";*)
+
+
+tmax=0.01;
+steps=100;
 times=N[Range[0,tmax-tmax/steps,tmax/steps]];
+split=1;
+splitTimes=Split[times,!Or@@Table[#1<m tmax/split<=#2,{m,split-1}]&];
 
 
-runs=100;
+runs=1;
 
 
 length=16;
@@ -40,6 +54,9 @@ lowPairs = {};
 
 
 occupied={7,8,9,10};
+
+
+(*occupied={1,2};*)
 
 
 (*sym1 = 1;

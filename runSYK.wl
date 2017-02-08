@@ -8,10 +8,14 @@
 (*setup*)
 
 
-(*SetDirectory[NotebookDirectory[]]*)
+SetDirectory[NotebookDirectory[]]
 
 
-SetDirectory[Directory[]<>"/fermionTWA"];
+(*SetDirectory[Directory[]<>"/fermionTWA"];*)
+
+
+SetSystemOptions["ParallelOptions" -> "ParallelThreadNumber" -> 1];
+SetSystemOptions["MKLThreads" -> 1];
 
 
 <<randomSeed.wl
@@ -68,13 +72,16 @@ obsfun=Function[{values},
 (*start=makeDSolveStart[observables];*)
 
 
-real=Import[pathToJcoup<>"flatJreal.CSV","Data"];
-imag=Import[pathToJcoup<>"flatJimag.CSV","Data"];
+(*real=Import["/projectnb/twambl/170207_1_s16f4/flatJreal.CSV","Data"];
+imag=Import["/projectnb/twambl/170207_1_s16f4/flatJimag.CSV","Data"];
 complex=real+I*imag;
-Jcoup=ArrayReshape[complex,{sites,sites,sites,sites}];
+Jcoup=ArrayReshape[complex,{sites,sites,sites,sites}];*)
 
 
-Timing[start=makeDSolveStartSYK[observables];]
+(*Timing[start=makeDSolveStartSYK[observables];]*)
+
+
+t1=Timing[Get[pathToStart]];
 
 
 (*eachTWA={};
@@ -84,12 +91,25 @@ AppendTo[eachTWA,runRandomInitsFermiHubbard[start,obsfun]];
 fullTWA=Total[eachTWA]/runs;*)
 
 
-(*fullTWA=0;
-t2=Table[
 Timing[
-fullTWA+=runRandomInitsFermiHubbard[start,obsfun]/runs;
-][[1]]
-,{rr,runs}];*)
+fullTWA=0;
+firstTime=First@splitTimes;
+nextTimes=Drop[splitTimes,1];
+Table[
+t2=Timing[stuff=singleRunShort[start,randomInitsFermiHubbard,firstTime];];
+(*stuff=singleRunShort[start,meanInitsFermiHubbard,firstTime];*)
+lastTime=Last@firstTime;
+t3={};
+Table[
+AppendTo[t3,Timing[stuff=Join[stuff,singleRunShort[start,Flatten[randomInitsFHMid[lastTime,Last@stuff]],trange]];]];
+lastTime=Last@trange;
+,{trange,nextTimes}];
+t4=Timing[newObs=Chop[obsfun/@stuff];];
+t5=Timing[AddTo[fullTWA,newObs/runs];];
+,{rr,runs}];]
+
+
+t6=Timing[fermOc=fullTWA[[All,1]]\[Transpose];];
 
 
 mmu=MaxMemoryUsed[]/10.^6;
@@ -98,4 +118,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["start.dat",{mmu,start}];
+Save["dataFermion.dat",{mmu,t1,t2,t3,t4,t5,t6,fermOc}];
