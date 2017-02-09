@@ -3,7 +3,7 @@
 pathToStart="/projectnb/twambl/170207_3_startTWAde/rundefined/start.dat";
 
 
-pathToJcoup="/projectnb/twambl/170207_1_s16f4/";
+pathToJcoup="/projectnb/twambl/170209_1_s20f5/";
 
 
 (*pathToStart="/Users/shainen/Dropbox/Research/fTWA/SYK model/data/start.dat";*)
@@ -19,10 +19,10 @@ split=1;
 splitTimes=Split[times,!Or@@Table[#1<m tmax/split<=#2,{m,split-1}]&];
 
 
-runs=100;
+runs=10;
 
 
-length=16;
+length=20;
 
 
 sites=length;
@@ -53,7 +53,7 @@ lowPairs = {};
 (*occupied=Join[nfc/@(Position[fermenergy,_?Negative,2]-1),nfc/@(Position[fermenergy,0.,2]-1),nfc/@(Position[fermenergy,_?Negative,2]-1)+sites,nfc/@(Position[fermenergy,0.,2]-1)+sites];*)
 
 
-occupied={7,8,9,10};
+occupied=Range[5];
 
 
 (*occupied={1,2};*)
