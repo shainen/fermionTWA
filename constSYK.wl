@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-pathToStart="/projectnb/twambl/170207_3_startTWAde/rundefined/start.dat";
+pathToStart="/projectnb/twambl/170209_2_startTWAs20/rundefined/start.dat";
 
 
 pathToJcoup="/projectnb/twambl/170209_1_s20f5/";

@@ -33,7 +33,7 @@ cd $$SCRATCH_DIR/
 cd ${prj}
 echo "SeedRandom[$$SGE_TASK_ID]" > randomSeed.wl
 cd ..
-time math -script ${prj}/startSYK.wl
+time math -script ${prj}/runSYK.wl
 
 # Remove the now-useless files
 rm -r ${prj} 
