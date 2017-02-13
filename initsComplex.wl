@@ -39,6 +39,10 @@ randomEm[ii_,jj_]:=random[meanEm[ii,jj],varEm[ii,jj]]
 randomEl[ii_,jj_]:=random[meanEl[ii,jj],varEl[ii,jj]]
 
 
+randomEmWide[ii_,jj_]:=random[meanEm[ii,jj],2varEm[ii,jj]]
+randomElWide[ii_,jj_]:=random[meanEl[ii,jj],2varEl[ii,jj]]
+
+
 (*randomBm[ii_,jj_]:=random[meanBm[ii,jj],varBm[ii,jj]]
 randomBl[ii_,jj_]:=random[meanBl[ii,jj],varBl[ii,jj]]*)
 
