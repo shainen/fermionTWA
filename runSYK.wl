@@ -65,7 +65,7 @@ observables={Em[#1,#2]&@@@midPairs,El[#1,#2]&@@@lowPairs
 (*,Flatten[{Em[#1,#2]&@@@midPairs,El[#1,#2]&@@@lowPairs}]*)
 };
 obsfun=Function[{values},
-{values[[1,Position[midPairs,{#,#}][[1,1]]]]+1/2&/@Range[numferm](*,values[[2]]Total[(values[[1]]\[Transpose])^2]/2+Total[Abs[values[[3]]\[Transpose]]^2]*)}
+{values[[1,Position[midPairs,{#,#}][[1,1]]]]+1/2&/@Range[numferm],values[[1]](*,values[[2]]Total[(values[[1]]\[Transpose])^2]/2+Total[Abs[values[[3]]\[Transpose]]^2]*)}
 ];
 
 
@@ -96,7 +96,7 @@ fullTWA=0;
 firstTime=First@splitTimes;
 nextTimes=Drop[splitTimes,1];
 Table[
-t2=Timing[stuff=singleRunShort[start,randomInitsFermiHubbardDisc,firstTime];];
+t2=Timing[stuff=singleRunShort[start,randomInitsFermiHubbard,firstTime];];
 (*stuff=singleRunShort[start,meanInitsFermiHubbard,firstTime];*)
 lastTime=Last@firstTime;
 t3={};
@@ -112,10 +112,13 @@ t5=Timing[AddTo[fullTWA,newObs/runs];];
 t6=Timing[fermOc=fullTWA[[All,1]]\[Transpose];];
 
 
+t6=Timing[expCorrs=fullTWA[[All,2]]\[Transpose];];
+
+
 mmu=MaxMemoryUsed[]/10.^6;
 
 
 SetDirectory[ParentDirectory[]];
 
 
-Save["dataFermion.dat",{mmu,t1,t2,t3,t4,t5,t6,fermOc}];
+Save["dataFermion.dat",{mmu,t1,t2,t3,t4,t5,t6,fermOc,expCorrs}];
