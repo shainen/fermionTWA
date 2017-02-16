@@ -33,7 +33,7 @@ Do[
 tempAll=0;
 Do[
 Get["/projectnb/twambl/"<>rname<>"/r"<>ToString[kk]<>"/dataFermion.dat"];
-data={fermOc,boseOc};
+data={fermOc,expCorrs};
 AddTo[tempAll,data];
 ,{kk,rr}];
 AppendTo[eachOne,tempAll/comb];
