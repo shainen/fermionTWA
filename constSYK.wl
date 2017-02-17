@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-pathToStart="/projectnb/twambl/170216_3_startTWAs9/rundefined/start.dat";
+pathToStart="/projectnb/twambl/170208_3_startTWA3/rundefined/start.dat";
 
 
 pathToJcoup="/projectnb/twambl/170216_1_s9f6/";
@@ -22,7 +22,7 @@ splitTimes=Split[times,!Or@@Table[#1<m tmax/split<=#2,{m,split-1}]&];
 runs=100;
 
 
-length=9;
+length=16;
 
 
 sites=length;
@@ -53,10 +53,10 @@ lowPairs = {};
 (*occupied=Join[nfc/@(Position[fermenergy,_?Negative,2]-1),nfc/@(Position[fermenergy,0.,2]-1),nfc/@(Position[fermenergy,_?Negative,2]-1)+sites,nfc/@(Position[fermenergy,0.,2]-1)+sites];*)
 
 
-occupied=Range[6];
+(*occupied=Range[6];*)
 
 
-(*occupied={1,2};*)
+occupied={7,8,9,10};
 
 
 (*sym1 = 1;
