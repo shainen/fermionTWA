@@ -28,6 +28,9 @@ randomInitsFermiHubbardDisc:=Flatten[{Em[#1,#2][0]==discRandomEm[#1,#2]&@@@midPa
 randomInitsFermiHubbardWide:=Flatten[{Em[#1,#2][0]==randomEmWide[#1,#2]&@@@midPairs,El[#1,#2][0]==randomElWide[#1,#2]&@@@lowPairs}]
 
 
+randomInitsFermiHubbardPlus:=Flatten[{Em[#1,#2][0]==randomEmPlus[#1,#2]&@@@midPairs,El[#1,#2][0]==randomElPlus[#1,#2]&@@@lowPairs}]
+
+
 meanInitsFermiHubbard:=Flatten[{Em[#1,#2][0]==meanEm[#1,#2]&@@@midPairs,El[#1,#2][0]==meanEl[#1,#2]&@@@lowPairs}]
 
 
