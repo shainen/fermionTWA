@@ -13,6 +13,9 @@ thereB[x_]:=Length[Select[occupiedB,#==x&]]
 random[mean_,var_]:=If[var==0,mean,RandomVariate[NormalDistribution[mean,Sqrt[var/2]]] + I RandomVariate[NormalDistribution[mean,Sqrt[var/2]]]]
 
 
+randomReal[mean_,var_]:=If[var==0,mean,RandomVariate[NormalDistribution[mean,Sqrt[var]]]]
+
+
 (*random[mean_,var_]:=mean*)
 
 
@@ -43,7 +46,7 @@ randomEmWide[ii_,jj_]:=random[meanEm[ii,jj],2varEm[ii,jj]]
 randomElWide[ii_,jj_]:=random[meanEl[ii,jj],2varEl[ii,jj]]
 
 
-randomEmPlus[ii_,jj_]:=random[meanEm[ii,jj],varEm[ii,jj]+1/4]
+randomEmPlus[ii_,jj_]:=If[ii==jj,randomReal[meanEm[ii,jj],varEm[ii,jj]+1/4],random[meanEm[ii,jj],varEm[ii,jj]+1/4]]
 randomElPlus[ii_,jj_]:=random[meanEl[ii,jj],varEl[ii,jj]+1/4]
 
 
