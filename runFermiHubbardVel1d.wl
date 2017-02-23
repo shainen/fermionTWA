@@ -80,7 +80,7 @@ fullTWA=Total[eachTWA]/runs;*)
 fullTWA=0;
 t2=Table[
 Timing[
-fullTWA+=runRandomInitsFermiHubbard[start,obsfun]/runs;
+fullTWA+=runRandomInitsFermiHubbardPlus[start,obsfun]/runs;
 ][[1]]
 ,{rr,runs}];
 

@@ -5,7 +5,7 @@ steps=1000;
 times=N[Range[0,tmax-tmax/steps,tmax/steps]];
 
 
-runs=100;
+runs=1000;
 
 
 length=16;

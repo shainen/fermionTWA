@@ -152,6 +152,15 @@ singleRun[startEq,Flatten[{initsEm,initsEl}],obfun]
 ];
 
 
+runRandomInitsFermiHubbardPlus=Function[{startEq,obfun},
+Block[{initsEm,initsEl},
+initsEm=Em[#1,#2][0]==randomEmPlus[#1,#2]&@@@midPairs;
+initsEl=El[#1,#2][0]==randomElPlus[#1,#2]&@@@lowPairs;
+singleRun[startEq,Flatten[{initsEm,initsEl}],obfun]
+]
+];
+
+
 runMomInitsFermiHubbard=Function[{startEq,obfun},
 singleRun[startEq,Flatten[{initsEmMom,initsElMom}],obfun]
 ];
