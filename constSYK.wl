@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-pathToStart="/projectnb/twambl/170228_4_startTWAs20_scv/rundefined/start.dat";
+pathToStart="/projectnb/twambl/170228_6_startTWAs20_both/rundefined/start.dat";
 
 
 pathToJcoup="/projectnb/twambl/170209_1_s20f5/";
@@ -63,6 +63,6 @@ occupied=Range[5];
 (*occupied={7,8,9,10};*)
 
 
-sym1 = 0;
-sym2 = 1;
+sym1 = 1/2;
+sym2 = 1/2;
 sym3 = 0;
