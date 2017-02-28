@@ -30,7 +30,7 @@ SetSystemOptions["MKLThreads" -> 1];
 <<constSYK.wl
 
 
-<<eqsSYK.wl
+<<eqsSYKboth.wl
 
 
 <<initsComplex.wl

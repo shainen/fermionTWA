@@ -26,7 +26,7 @@ SetDirectory[Directory[]<>"/fermionTWA"];
 <<constSYK.wl
 
 
-<<eqsSYK.wl
+<<eqsSYKboth.wl
 
 
 <<initsComplex.wl
