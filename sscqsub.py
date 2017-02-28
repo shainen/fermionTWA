@@ -12,6 +12,7 @@ qsubfile = Template("""
 
 #$$ -j y
 #$$ -l h_rt=12:00:00
+#$$ -hold_jid 
 #$$ -V
 #$$ -m ea
 #$$ -M shainen@gmail.com
