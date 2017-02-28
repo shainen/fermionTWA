@@ -30,10 +30,10 @@ midPairs=Flatten[{Table[Table[{ii,jj},{jj,ii,length}],{ii,length}],Table[Table[{
 lowPairs={};
 
 
-(*bonds=Table[{n,Mod[n+1,length,1]},{n,length-1}];*)
+bonds=Table[{n,Mod[n+1,length,1]},{n,length-1}];
 
 
-bonds=Flatten[Table[Table[{i,j},{j,i+1,sites}],{i,sites-1}],1]
+(*bonds=Flatten[Table[Table[{i,j},{j,i+1,sites}],{i,sites-1}],1]*)
 
 
 alpha=1;
