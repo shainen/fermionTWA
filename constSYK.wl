@@ -3,7 +3,13 @@
 pathToStart="/projectnb/twambl/170228_12_startTWAs16_both/rundefined/start.dat";
 
 
-pathToJcoup="/projectnb/twambl/170207_1_s16f4/";
+pathToStart="/projectnb/twambl/170228_13_startTWAs16_scv/rundefined/start.dat";
+
+
+pathToStart="/projectnb/twambl/170208_3_startTWA3/rundefined/start.dat";
+
+
+(*pathToJcoup="/projectnb/twambl/170207_1_s16f4/";*)
 
 
 (*pathToStart="/Users/shainen/Dropbox/Research/fTWA/SYK model/data/start.dat";*)
@@ -19,7 +25,7 @@ split=1;
 splitTimes=Split[times,!Or@@Table[#1<m tmax/split<=#2,{m,split-1}]&];
 
 
-runs=100;
+runs=1;
 
 
 length=16;
