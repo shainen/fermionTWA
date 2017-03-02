@@ -1,9 +1,12 @@
 (* ::Package:: *)
 
-(*pathToStart="/projectnb/twambl/170228_12_startTWAs16_both/rundefined/start.dat";*)
+pathToStart="/projectnb/twambl/170302_4_startTWAs9_both/rundefined/start.dat";
 
 
-pathToJcoup="/projectnb/twambl/170216_1_s9f6/";
+pathToStart="/projectnb/twambl/170302_5_startTWAs9_scv/rundefined/start.dat";
+
+
+(*pathToJcoup="/projectnb/twambl/170216_1_s9f6/";*)
 
 
 (*pathToStart="/Users/shainen/Dropbox/Research/fTWA/SYK model/data/start.dat";*)
