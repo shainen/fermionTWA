@@ -25,7 +25,7 @@ split=1;
 splitTimes=Split[times,!Or@@Table[#1<m tmax/split<=#2,{m,split-1}]&];
 
 
-runs=1;
+runs=100;
 
 
 length=16;
