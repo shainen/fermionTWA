@@ -63,6 +63,6 @@ occupied=Range[8];
 (*occupied={7,8,9,10};*)
 
 
-sym1 = 0;
-sym2 = 1;
+sym1 = 1/2;
+sym2 = 1/2;
 sym3 = 0;
