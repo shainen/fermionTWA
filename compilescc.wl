@@ -45,7 +45,7 @@ avg=Total[eachOne]/Length[list];
 dir=StringSplit[ParentDirectory[],"/"][[4]];
 
 
-import[dir,100,{},1];
+import[dir,1,{},1];
 
 
 Save["/projectnb/twambl/"<>dir<>"compiled.dat",{avg}];

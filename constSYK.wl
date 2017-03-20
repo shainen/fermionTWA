@@ -1,6 +1,12 @@
 (* ::Package:: *)
 
-pathToStart="/projectnb/twambl/170320_2_startTWAs16f8/rundefined/start.dat";
+pathToStart="/projectnb/twambl/170320_5_startTWAs16f8_half/rundefined/start.dat";
+
+
+pathToStart="/projectnb/twambl/170320_6_startTWAs16f8_rho/rundefined/start.dat";
+
+
+(*pathToStart="/projectnb/twambl/170320_2_startTWAs16f8/rundefined/start.dat";*)
 
 
 pathToJcoup="/projectnb/twambl/170317_2_s16f8/";
@@ -19,7 +25,7 @@ split=1;
 splitTimes=Split[times,!Or@@Table[#1<m tmax/split<=#2,{m,split-1}]&];
 
 
-runs=100;
+runs=1;
 
 
 length=16;
